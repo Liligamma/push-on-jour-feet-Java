@@ -11,9 +11,15 @@ public class App {
     public static void main(String[] args) {
         initialize();
 
+        LoginControler loginControler = new LoginControler();
+        Spark.get("/login", (req, res ) ->loginControler.displayLogin(req, res));
+        Spark.get("/logout", (req, res ) ->loginControler.displayLogout(req, res));
         Spark.get("/", (req, res) -> {
+            System.out.println("coucou");
             return Template.render("home.html", new HashMap<>());
         });
+
+
     }
 
     static void initialize() {
