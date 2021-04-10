@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 public class review {
     int id;
-    LocalDateTime date;
+    long date;
     String contenuReview;
     int auteurId;
 
