@@ -1,8 +1,53 @@
 #parse("base.html")
 #@mainLayout()
-<h1>Login</h1>
-<div>
-    Coucou $user
-    j'ai $age
+
+<div class="container">
+     <div class="row">
+        <div class="col-12">
+            <h1>Connectez vous ou créez votre compte </h1>
+        </div>
+     </div>
+
+     <div class="row">
+        <!--         Création du bloc inscription -->
+         <div class="col-12 col-lg-6">
+             <h2> Je n'ai pas encore de compte </h2>
+             <form id="formulaire d'inscription" name="Formulaire" action="" method="POST">
+             <div class="form-group">
+                 <label for="nom"> Nom <input type="text" required="required" class="form-control" id="nom "  </label>
+                 <label for="prenim"> Prénom <input type="text" required="required" class="form-control" id="prenom "</label>
+                 <label for="pseudo"> Pseudo <input type="text" required="required" class="form-control" id="pseudo "</label>
+                 <label for="email"> Adresse E-mail  <input type="email" required="required" class="form-control" id="email"</label>
+                 <label for="telephone"> Téléphone <input type="text" class="form-control" id="nom "</label>
+                 <label for="pass"> Mot de passe<input type="password" required="required" minlength="8" required class="form-control" id="password "</label>
+
+                 <label for="soumission" >
+                 <input id="soumission" name="soumission" type="submit" <button type="button" class="btn btn-info" S'inscrire </button>
+                 </label>
+
+             </div>
+             </form>
+         </div>
+                <!--            Création du bloc connection -->
+         <div class="col-12 col-lg-6">
+             <h2> J'ai déja un compte, je me connecte </h2>
+
+             <form id="formulaire d'inscription" name="Formulaire" action="" method="POST">
+                 <div class="form-group">
+                     <label for="identifiant"> Pseudo ou adresse email <input type="text" required="required" class="form-control" id="identifiant"</label>
+                     <label for="password"> Mot de passe <input type="text" required="required" class="form-control" id="password"</label>
+
+                     <label for="soumission" >
+                         <input id="soumission" name="soumission" type="submit" <button type="button" class="btn btn-info" S'inscrire </button>
+                     </label>
+                 </div>
+
+             </form>
+         </div>
+     </div>
+<!--<div>-->
+<!--    Coucou $user-->
+<!--    j'ai $age-->
+<!--</div>-->
 </div>
 #end
