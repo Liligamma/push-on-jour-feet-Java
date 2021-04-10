@@ -4,14 +4,53 @@
 <head>
     <meta charset="utf-8"/>
 
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
     <link rel="stylesheet" href="/css/style.css">
     <title> push on your feet </title>
 </head>
 
 
 <body>
-<div id="content">
+
+<!--creation de la barre de navigation -->
+<div class="container">
+    <div class="row" >
+        <nav class ="col navbar navbar-expand navbar-light">
+            <a class="navbar-brand" href="#"> Push On Your Feet</a>
+        <!--            creation du bouton burger pour la partie responsive -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target ="#navbarContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+          <div id="navbarContent" class="collapse navbar-collapse">
+            <!--              listage des item de la barre de navigation -->
+            <ul class ="navbar-nav">
+                <li class ="nav-item active">
+                    <a class="nav-link" href =""> Accueil</a>
+                </li>
+                <li class ="nav-item">
+                    <a class ="nav-link" href="base.html"> Le concept</a>
+                </li>
+                <li class ="nav-item">
+                    <a class ="nav-link" href="base.html"> Articles</a>
+                </li>
+                <li class ="nav-item">
+                    <a class ="nav-link" href="base.html"> Les sorties </a>
+                </li>
+                <li class ="nav-item">
+                    <a class ="nav-link" href="base.html"> FAQ  </a>
+                </li>
+
+            </ul>
+            </div>
+        </nav>
+    </div>
+
+</div>
+<div class ="content">
     $bodyContent
+
 </div>
 
 </body>

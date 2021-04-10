@@ -1,0 +1,23 @@
+.col navbar navbar-expand navbar-light{
+    position: center;
+    display: flex;
+}
+.collapse navbar-collapse{
+    position: center;
+}
+
+@media (min-width: 768px) {
+    .navbar .navbar-nav {
+        margin-left: 100px;
+
+    }
+
+    .navbar .navbar-collapse {
+        text-align: center;
+    }
+
+    li{
+        padding-right: 30px;
+    }
+}
+
