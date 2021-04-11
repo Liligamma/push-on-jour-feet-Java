@@ -1,0 +1,35 @@
+[33mcommit 07c53a04d02b27f88567c532a967570b320545e5[m[33m ([m[1;36mHEAD -> [m[1;32mlogoset[m[33m)[m
+Author: Magali <magali.dugue24@gmail.com>
+Date:   Sun Apr 11 10:16:32 2021 +0200
+
+    insersion du logo et ajustement de la barre nav et du formulaire
+
+[33mcommit cdef765792d76a92b43846e5d7759a20c43d5922[m[33m ([m[1;32mpageLoginHtml[m[33m, [m[1;32mpageEvenement[m[33m)[m
+Author: Magali <magali.dugue24@gmail.com>
+Date:   Sat Apr 10 16:13:55 2021 +0200
+
+    Partie HTML de la page de login
+
+[33mcommit e70294a1e3b4c10d096685bab50910c8761f1f4d[m[33m ([m[1;32mbarreNav[m[33m)[m
+Author: Magali <magali.dugue24@gmail.com>
+Date:   Sat Apr 10 15:02:53 2021 +0200
+
+    nav barre sans le burger
+
+[33mcommit a68ae8f02c8902ad3cbb7cfd3dd9dc19f7ddb2b8[m[33m ([m[1;32mmaster[m[33m)[m
+Author: Magali <magali.dugue24@gmail.com>
+Date:   Sat Apr 10 09:32:37 2021 +0200
+
+    changement type variable date
+
+[33mcommit 1cf5820c4fb30883a186e6d86665576548cf0fc6[m
+Author: Magali <magali.dugue24@gmail.com>
+Date:   Sat Apr 10 09:26:58 2021 +0200
+
+    Premiers pas avec Robin et création des classes
+
+[33mcommit 221d5f0431022d8f9508d87fb8b26297bd35071b[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Magali Dugué <77433765+Liligamma@users.noreply.github.com>
+Date:   Wed Apr 7 18:13:46 2021 +0200
+
+    Initial commit
