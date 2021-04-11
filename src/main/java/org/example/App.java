@@ -19,6 +19,9 @@ public class App {
             return Template.render("home.html", new HashMap<>());
         });
 
+        EventControler eventControler= new EventControler();
+//        Spark.get("/evenements", (req, res ) ->eventControler.
+
 
     }
 

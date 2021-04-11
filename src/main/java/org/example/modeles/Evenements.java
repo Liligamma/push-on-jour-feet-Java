@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 
 public class Evenements {
     int id;
-    long dateEvenement;
+    String dateEvenement;
     double latitude;
     double longitude;
     String nomEvenement;
@@ -14,7 +14,7 @@ public class Evenements {
     String commentairesEvenement;
     int participants;
 
-    public Evenements(int id, long dateEvenement, double latitude, double longitude, String nomEvenement, int organisateurId, String commentairesEvenement, int participants) {
+    public Evenements(int id, String dateEvenement, double latitude, double longitude, String nomEvenement, int organisateurId, String commentairesEvenement, int participants) {
         this.id = id;
         this.dateEvenement = dateEvenement;
         this.latitude = latitude;
