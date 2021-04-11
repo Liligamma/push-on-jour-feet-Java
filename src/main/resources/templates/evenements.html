@@ -1,0 +1,13 @@
+#parse("base.html")
+#@mainLayout()
+<h1>Evenements</h1>
+<div>
+    #foreach ($evenement in $listeEvenements)
+        $evenement.toString() <br>
+    #end
+<!--$listeEvenements[0].toString()-->
+
+</div>
+
+
+#end

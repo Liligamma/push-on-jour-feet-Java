@@ -14,13 +14,13 @@ public class App {
         LoginControler loginControler = new LoginControler();
         Spark.get("/login", (req, res ) ->loginControler.displayLogin(req, res));
         Spark.get("/logout", (req, res ) ->loginControler.displayLogout(req, res));
+        EventControler eventControler= new EventControler();
+        Spark.get ("/evenements",(req, res)->eventControler.displayEvents(req, res));
         Spark.get("/", (req, res) -> {
             System.out.println("coucou");
             return Template.render("home.html", new HashMap<>());
         });
 
-        EventControler eventControler= new EventControler();
-//        Spark.get("/evenements", (req, res ) ->eventControler.
 
 
     }

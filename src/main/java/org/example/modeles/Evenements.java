@@ -24,4 +24,9 @@ public class Evenements {
         this.commentairesEvenement = commentairesEvenement;
         this.participants = participants;
     }
+
+    @Override
+    public String toString(){
+        return "Date " + dateEvenement + "\nIntitulé "+ nomEvenement +"\n Commentaires " + commentairesEvenement;
+    }
 }
