@@ -1,13 +1,23 @@
 #parse("base.html")
 #@mainLayout()
-<h1>Evenements</h1>
-<div>
-    #foreach ($evenement in $listeEvenements)
-        $evenement.toString() <br>
-    #end
+<h1 style="color: var(--red)">Evenements</h1>
+
+<div class="container">
+    <div class="row">
+        #foreach ($evenement in $listeEvenements)
+        <div class="col-12 col-lg-4 bg-danger">
+            $evenement.toString() <br>
+        </div>
+        #end
+    </div>
+</div>
+
+    
+
+
 <!--$listeEvenements[0].toString()-->
 
-</div>
+
 
 
 #end
