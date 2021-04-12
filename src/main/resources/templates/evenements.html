@@ -1,0 +1,30 @@
+#parse("base.html")
+#@mainLayout()
+<h1 style="color: var(--red);">Les sorties </h1>
+
+<div class="container">
+
+    <div class="row">
+        #foreach ($evenement in $listeEvenements)
+        <div class ="col-12 col-lg-4 bg-danger">
+
+            $evenement.toString() <br>
+
+        </div>
+        #end
+    </div>
+
+</div>
+
+<div>
+
+
+
+
+
+<!--$listeEvenements[0].toString()-->
+
+</div>
+
+
+#end
