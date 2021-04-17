@@ -25,8 +25,27 @@ public class Evenements {
         this.participants = participants;
     }
 
-    @Override
-    public String toString(){
-        return "Date " + dateEvenement + "\nIntitulé "+ nomEvenement +"\n Commentaires " + commentairesEvenement;
-    }
+    public String getdateEvenement()
+    {return dateEvenement;}
+
+    public void setDateEvenement(String id)
+    { this.dateEvenement = dateEvenement;}
+
+    public String getnomEvenement()
+    {return nomEvenement;}
+
+    public void setNomEvenement(String id)
+    { this.nomEvenement = nomEvenement;}
+
+    public String getcommentairesEvenement()
+    {return commentairesEvenement;}
+
+    public void setCommentairesEvenement(String id)
+    { this.commentairesEvenement = commentairesEvenement;}
+
+
+//    @Override
+//    public String toString(){
+//        return "Quand ?\r\n" + dateEvenement + "Quoi ?\r\n" + nomEvenement +"Commentaires : \r\n" + commentairesEvenement;
+//    }
 }

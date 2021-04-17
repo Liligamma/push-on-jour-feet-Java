@@ -15,17 +15,17 @@ public class EventControler {
 
  public String displayEvents(Request request, Response response) {
   Map<String, Object > modele = new HashMap<>();
-  Evenements firstEvent = new Evenements(1, "15 avril 9h", 48, 2, "Sortie Running 10km au bois de boulogne", 2,
-          "rendez vous porte d Auteuil devant la fontaine à 10h", 2);
+  Evenements firstEvent = new Evenements(1, "15 avril 9h",  48, 2, "Sortie Running 10km au bois de boulogne", 2,
+          "Rendez vous porte d'Auteuil devant la fontaine à 10h", 2);
 
-  Evenements secondEvent = new Evenements(1, "17 avril 8h", 48, 2, "Sortie velo à Lonchamps ", 1,
-          "rendez vous a Lonchamps à 8h", 2);
+  Evenements secondEvent = new Evenements(1, "17 avril 8h", 48, 2, "Sortie velo Lonchamps ", 1,
+          "Rendez vous  Lonchamps à 8h", 2);
 
   Evenements thirdEvent = new Evenements(1, "25 avril 15h", 48, 2, "Sortie running 15km ", 1,
-          "rendez vous aux Buttes Chaumont à 15h", 2);
+          "Rendez vous aux Buttes Chaumont à 15h", 2);
 
   Evenements fourthEvent = new Evenements(1, "30 avril 15h", 48, 2, "Sortie running 20km ", 1,
-          "rendez vous aux Buttes Chaumont à 12h", 2);
+          "Rendez vous aux Buttes Chaumont à 12h", 2);
 
 
   ArrayList<Evenements> listeEvenements = new ArrayList<Evenements>();

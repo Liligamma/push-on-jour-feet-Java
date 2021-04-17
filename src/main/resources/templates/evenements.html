@@ -1,17 +1,26 @@
 #parse("base.html")
 #@mainLayout()
-<h1 style="color: var(--red)">Evenements</h1>
+
+<div class="container float-center">
+<h1 style="color: var(--red)">Les sorties</h1> <br>
+</div>
 
 <div class="container">
-    <div class="row">
-        #foreach ($evenement in $listeEvenements)
-        <div class="col-12 col-lg-4 bg-danger">
-            $evenement.toString() <br>
+    <div class="row justify-content-center row-cols-3 row-cols-lg-12">
+        #foreach ($event in $listeEvenements)
+        <div class="col-12 col-lg-2 mr-1 border border-danger rounded shadow flex-box">
+           <img class="img-fluid border border-dark rounded-circle mt-2 mb-2" src="img/running_1.svg"> <hr>
+                <div class="row justify-content-center font-weight-bold">$event.getdateEvenement()  </div> <br>
+                <div class="row justify-content-center">$event.getnomEvenement() </div>  <br>
+                <div class="row text-center">$event.getcommentairesEvenement() </div>
+                <div class="row justify-content-center mt-2"> <a class="btn btn-danger align-middle" href="#" role="button"> Détails </a>
+                </div>
+
+
         </div>
         #end
     </div>
 </div>
-
 
 
 

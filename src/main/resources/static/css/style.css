@@ -58,3 +58,14 @@ h2{
 .form-group{
     text-align: center;
 }
+
+.col-3{
+    padding-right: 12px;
+}
+
+.img-fluid{
+    width: 38px;
+    height: 38px;
+    padding : 5px;
+    margin-top: 10px;
+}
