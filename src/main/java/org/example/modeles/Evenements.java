@@ -46,9 +46,22 @@ public class Evenements {
     public void setCommentairesEvenement(String id)
     { this.commentairesEvenement = commentairesEvenement;}
 
+    public int getorganisateurId()
+    {return organisateurId;}
+
+    public void setorganisateurId(int id)
+    { this.organisateurId = organisateurId;}
+
+    public int getparticipants()
+    {return participants;}
+
+    public void setParticipants(int id)
+    { this.participants = participants;}
 
 
-@Override
+
+
+    @Override
  public String toString(){
         return "Quand ?\r\n" + dateEvenement + "Quoi ?\r\n" + nomEvenement +"Commentaires : \r\n" + commentairesEvenement;
     }

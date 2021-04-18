@@ -16,6 +16,9 @@ public class App {
         Spark.get("/logout", (req, res ) ->loginControler.displayLogout(req, res));
         EventControler eventControler= new EventControler();
         Spark.get ("/evenements",(req, res)->eventControler.displayEvents(req, res));
+        HomeControler homeControler= new HomeControler();
+        Spark.get ("/home",(req, res)->homeControler.displayHome(req, res));
+        
         Spark.get("/", (req, res) -> {
             System.out.println("coucou");
             return Template.render("home.html", new HashMap<>());
