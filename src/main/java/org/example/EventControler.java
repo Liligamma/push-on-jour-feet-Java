@@ -35,6 +35,7 @@ public class EventControler {
   listeEvenements.add(fourthEvent);
   modele.put("listeEvenements", listeEvenements);
 
+
   return Template.render("evenements.html", modele);
 
  }
