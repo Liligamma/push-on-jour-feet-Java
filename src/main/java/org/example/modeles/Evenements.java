@@ -28,8 +28,11 @@ public class Evenements {
     public String getdateEvenement()
     {return dateEvenement;}
 
+
+
     public void setDateEvenement(String id)
     { this.dateEvenement = dateEvenement;}
+
 
     public String getnomEvenement()
     {return nomEvenement;}
@@ -44,8 +47,9 @@ public class Evenements {
     { this.commentairesEvenement = commentairesEvenement;}
 
 
-//    @Override
-//    public String toString(){
-//        return "Quand ?\r\n" + dateEvenement + "Quoi ?\r\n" + nomEvenement +"Commentaires : \r\n" + commentairesEvenement;
-//    }
+
+@Override
+ public String toString(){
+        return "Quand ?\r\n" + dateEvenement + "Quoi ?\r\n" + nomEvenement +"Commentaires : \r\n" + commentairesEvenement;
+    }
 }

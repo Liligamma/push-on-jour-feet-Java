@@ -28,12 +28,15 @@ public class EventControler {
           "Rendez vous aux Buttes Chaumont à 12h", 2);
 
 
+
+
   ArrayList<Evenements> listeEvenements = new ArrayList<Evenements>();
   listeEvenements.add(firstEvent);
   listeEvenements.add(secondEvent);
   listeEvenements.add(thirdEvent);
   listeEvenements.add(fourthEvent);
   modele.put("listeEvenements", listeEvenements);
+
 
 
   return Template.render("evenements.html", modele);

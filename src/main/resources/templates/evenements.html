@@ -13,7 +13,8 @@
                 <div class="row justify-content-center font-weight-bold">$event.getdateEvenement()  </div> <br>
                 <div class="row justify-content-center">$event.getnomEvenement() </div>  <br>
                 <div class="row text-center">$event.getcommentairesEvenement() </div>
-                <div class="row justify-content-center mt-2"> <a class="btn btn-danger align-middle" role="button" id="open"> Détails </a>
+                $foreach (
+                <div class="row justify-content-center mt-2"> <a class="btn btn-danger align-middle" role="button" id="1"> Détails </a>
                 </div>
 
         </div>
@@ -26,6 +27,7 @@
  <div class="row justify-content-center">
      <div class="col-12 border border-danger rounded shadow flex-box">
         <h2 style="color: var(--red)"> Détails de la sortie </h2> <br>
+         $listeEvenements[0].getdateEvenement()
 
         </div>
   </div>
