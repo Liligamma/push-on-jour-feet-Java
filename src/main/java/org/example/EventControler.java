@@ -42,4 +42,11 @@ public class EventControler {
   return Template.render("evenements.html", modele);
 
  }
+
+
+ public String eventDetails (Request request, Response response){
+  Map<String, Object > modele = new HashMap<>();
+  String eventId = request.queryParamOrDefault("event_id", "0");
+  return  Template.render("detailsEvenements.html", modele);
+ }
 }
