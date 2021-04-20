@@ -25,10 +25,15 @@ public class Evenements {
         this.participants = participants;
     }
 
+    public int getidEvenement()
+    {return id;}
+
+    public void setIDEvenement(int id)
+    { this.id =id;}
+    
 
     public String getdateEvenement()
     {return dateEvenement;}
-
 
 
     public void setDateEvenement(String id)

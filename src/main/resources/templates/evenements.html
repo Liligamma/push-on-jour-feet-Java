@@ -13,14 +13,11 @@
                 <div class="row justify-content-center font-weight-bold">$event.getdateEvenement()  </div> <br>
                 <div class="row justify-content-center">$event.getnomEvenement() </div>  <br>
                 <div class="row text-center">$event.getcommentairesEvenement() </div> <br>
+
+
             <div class="row justify-content-center">
-                <script>
-                    fuction setUrl(){
-                        window.location.href'=evenements/details?detail_id=' + document.getElementById(1).value;
-                    };
-                </script>
-                <button class ="btn btn-danger" type="submit" id ="1" onClick="setUrl(); return false;">Détails</button>
-                </div>
+                <button class ="btn btn-danger" type="button" id ="open" onClick="location.href='evenements/details?detail_id='+ $event.getidEvenement()">Détails</button>
+            </div>
 
 
         </div>

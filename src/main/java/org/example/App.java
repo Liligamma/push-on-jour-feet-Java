@@ -16,7 +16,7 @@ public class App {
         Spark.get("/logout", (req, res ) ->loginControler.displayLogout(req, res));
         EventControler eventControler= new EventControler();
         Spark.get ("/evenements",(req, res)->eventControler.displayEvents(req, res));
-        Spark.get ("evenements/details?detail_id=12", (req, res)->eventControler.eventDetails(req,res));
+        Spark.get ("/evenements/details", (req, res)->eventControler.eventDetails(req,res));
         HomeControler homeControler= new HomeControler();
         Spark.get ("/home",(req, res)->homeControler.displayHome(req, res));
         
