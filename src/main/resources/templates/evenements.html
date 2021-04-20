@@ -14,8 +14,14 @@
                 <div class="row justify-content-center">$event.getnomEvenement() </div>  <br>
                 <div class="row text-center">$event.getcommentairesEvenement() </div> <br>
             <div class="row justify-content-center">
-                    <a href="" class="btn btn-danger btn-lg active" role="button">Détails</a>
+                <script>
+                    fuction setUrl(){
+                        window.location.href'=evenements/details?detail_id=' + document.getElementById(1).value;
+                    };
+                </script>
+                <button class ="btn btn-danger" type="submit" id ="1" onClick="setUrl(); return false;">Détails</button>
                 </div>
+
 
         </div>
         #end

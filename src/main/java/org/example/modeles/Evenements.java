@@ -25,6 +25,7 @@ public class Evenements {
         this.participants = participants;
     }
 
+
     public String getdateEvenement()
     {return dateEvenement;}
 
