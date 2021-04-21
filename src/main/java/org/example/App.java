@@ -1,6 +1,7 @@
 package org.example;
 
 import org.example.core.Conf;
+import org.example.core.Database;
 import org.example.core.Template;
 import org.example.middlewares.LoggerMiddleware;
 import spark.Spark;
@@ -10,6 +11,9 @@ import java.util.HashMap;
 public class App {
     public static void main(String[] args) {
         initialize();
+
+        Database db = Database.get();
+        db.checkConnection();
 
         LoginControler loginControler = new LoginControler();
         Spark.get("/login", (req, res ) ->loginControler.displayLogin(req, res));
