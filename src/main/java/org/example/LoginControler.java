@@ -1,6 +1,7 @@
 package org.example;
 
 import org.example.core.Template;
+import org.example.daos.LoginDao;
 import org.example.modeles.User;
 import spark.Request;
 import spark.Response;
@@ -9,6 +10,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class LoginControler {
+
+    LoginDao LoginDao = new LoginDao();
 
     public String displayLogin(Request request, Response response){
         String userName = "Magali";
