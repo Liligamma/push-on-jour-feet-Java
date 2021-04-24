@@ -18,6 +18,7 @@ public class App {
         LoginControler loginControler = new LoginControler();
         Spark.get("/login", (req, res ) ->loginControler.displayLogin(req, res));
         Spark.get("/logout", (req, res ) ->loginControler.displayLogout(req, res));
+        Spark.get("/login/moncompte", (req, res)->loginControler.displayAccount(req, res));
         EventControler eventControler= new EventControler();
         Spark.get ("/evenements",(req, res)->eventControler.displayEvents(req, res));
         Spark.get ("/evenements/details", (req, res)->eventControler.eventDetails(req,res));

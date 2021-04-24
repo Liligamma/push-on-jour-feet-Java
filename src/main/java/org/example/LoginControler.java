@@ -2,6 +2,7 @@ package org.example;
 
 import org.example.core.Template;
 import org.example.daos.LoginDao;
+import org.example.modeles.Evenement;
 import org.example.modeles.User;
 import spark.Request;
 import spark.Response;
@@ -30,6 +31,16 @@ public class LoginControler {
         modele.put("firstUser", firstUser);
         return Template.render("logout.html", modele);
 
+    }
+
+    public String displayAccount (Request request, Response response){
+        Map<String, Object > modele = new HashMap<>();
+        String userPseudo = request.queryParamOrDefault("user_Pseudo", "0");
+        User firstUser=LoginDao.getUserByPseudo(userPseudo);
+
+        modele.put("monCompte", firstUser);
+
+        return Template.render("monCompte.html", modele);
     }
 
 

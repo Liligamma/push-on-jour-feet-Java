@@ -19,7 +19,7 @@
              <form id="formulaire d'inscription" name="Formulaire" action="http://localhost:8080/evenements" >
              <div class="form-group">
                  <label for="nom"> Nom <input type="text" required="required" class="form-control" id="nom "  </label>
-                 <label for="prenm"> Prénom <input type="text" required="required" class="form-control" id="prenom "</label>
+                 <label for="prenom"> Prénom <input type="text" required="required" class="form-control" id="prenom "</label>
                  <label for="pseudo"> Pseudo <input type="text" required="required" class="form-control" id="pseudo "</label>
                  <label for="email"> Adresse E-mail  <input type="email" required="required" class="form-control" id="email"</label>
                  <label for="telephone"> Téléphone <input type="text" class="form-control" id="nom "</label>
@@ -37,14 +37,14 @@
          <div class="col-12 col-lg-6">
              <h2> J'ai déja un compte, je me connecte </h2>
 
-             <form id="formulaire d'inscription" name="Formulaire" action="http://localhost:8080/evenements" >
+             <form id="formulaireInscription" name="formulaire" method="GET" action="http://localhost:8080/moncompte" >
                  <div class="form-group">
-                     <label for="identifiant"> Pseudo ou adresse email <input type="text" required="required" class="form-control" id="identifiant"</label>
+                     <label for="identifiant"> Pseudo <input type="text" required="required" class="form-control" id="identifiant"</label>
                      <label for="password"> Mot de passe <input type="text" required="required" class="form-control" id="password"</label>
                      <br>
 
 
-                         <button type="submit" class="btn btn-danger"> Se connecter </button>
+                         <button class="btn btn-danger" type="button" id="open" onclick="location.href ='login/moncompte?user_Pseudo=' + $user.getPseudo()"> Se connecter </button>
 
                  </div>
 

@@ -30,12 +30,32 @@ public class User {
 
     }
 
-    public int getId() {
-        return id;
+    public int getId() { return id;}
+
+    public void setId(int id) { this.id = id;}
+
+    public String getPseudo() {
+        return pseudo;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setPseudo(String pseudo) {
+        this.pseudo = pseudo;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
+    }
+
+    public String getPrenom() {
+        return prenom;
+    }
+
+    public void setPrenom(String prenom) {
+        this.prenom = prenom;
     }
 
     public String getEmail() {
