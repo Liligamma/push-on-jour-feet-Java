@@ -7,12 +7,13 @@ import org.example.modeles.User;
 import spark.Request;
 import spark.Response;
 
+import java.sql.SQLOutput;
 import java.util.HashMap;
 import java.util.Map;
 
 public class LoginControler {
 
-    LoginDao LoginDao = new LoginDao();
+    LoginDao loginDao = new LoginDao();
 
     public String displayLogin(Request request, Response response){
         String userName = "Magali";
@@ -36,9 +37,11 @@ public class LoginControler {
     public String displayAccount (Request request, Response response){
         Map<String, Object > modele = new HashMap<>();
         String userPseudo = request.queryParamOrDefault("user_Pseudo", "0");
-        User firstUser=LoginDao.getUserByPseudo(userPseudo);
+        User firstUsers= loginDao.getUserByPseudo(userPseudo);
 
-        modele.put("monCompte", firstUser);
+        System.out.println(firstUsers);
+
+        modele.put("account", firstUsers);
 
         return Template.render("monCompte.html", modele);
     }
