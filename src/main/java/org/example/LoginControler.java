@@ -46,5 +46,14 @@ public class LoginControler {
         return Template.render("monCompte.html", modele);
     }
 
+    public String createAccount (Request request, Response response){
+        User user = new User();
+        Map<String, Object > modele = new HashMap<>();
+//        String theUser = request.queryParamOrDefault("user_Pseudo", "0");
+        User theUser = loginDao.getUser(user);
+        modele.put("accountCreation", theUser);
+        return Template.render("creationCompte.html", modele);
+    }
+
 
 }
