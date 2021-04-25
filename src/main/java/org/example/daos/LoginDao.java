@@ -14,14 +14,8 @@ import java.util.List;
 
 public class LoginDao {
 
-    public User getUser (User user){
-//        User firstUser = new User();
-//        firstUser.getPseudo();
-//        firstUser.getPassword();
-//        firstUser.getNom();
-//        firstUser.getPrenom();
-//        firstUser.getEmail();
-//        firstUser.getTelephone();
+    public User setNewUser (User user){
+
         Database db =Database.get();
         Connection connection = db.getConnection();
         try {
@@ -34,13 +28,13 @@ public class LoginDao {
             statement.setString(6, user.getTelephone());
             ResultSet resultSet = statement.executeQuery();
 
-           resultSet.next();
-           user.setId(resultSet.getInt(1));
-           user.setPseudo(resultSet.getString(2));
-           user.setPassword(resultSet.getString(3));
-           user.setNom(resultSet.getString(4));
-           user.setPrenom(resultSet.getString(5));
-           user.setEmail(resultSet.getString(6));
+//           resultSet.next();
+//           user.setId(resultSet.getInt(1));
+//           user.setPseudo(resultSet.getString(2));
+//           user.setPassword(resultSet.getString(3));
+//           user.setNom(resultSet.getString(4));
+//           user.setPrenom(resultSet.getString(5));
+//           user.setEmail(resultSet.getString(6));
 
 
         } catch (SQLException throwables) {
