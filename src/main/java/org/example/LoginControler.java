@@ -36,10 +36,16 @@ public class LoginControler {
 
     public String displayAccount (Request request, Response response){
         Map<String, Object > modele = new HashMap<>();
-        String userPseudo = request.queryParamOrDefault("user_Pseudo", "0");
+        String userPseudo = request.queryParams("user_Pseudo");
+        String userMdp = request.queryParams("mdp");
+
+
         User firstUsers= loginDao.getUserByPseudo(userPseudo);
 
+
         System.out.println(firstUsers);
+        System.out.println(userPseudo);
+
 
         modele.put("account", firstUsers);
 
@@ -49,8 +55,12 @@ public class LoginControler {
     public String createAccount (Request request, Response response){
         User user = new User();
         Map<String, Object > modele = new HashMap<>();
-        String userPseudo = user.getPseudo();
-        userPseudo = request.queryParamOrDefault("user_pseudo", "0");
+        String userPrenom = request.queryParams("prenom");
+        String userNom = request.queryParams("nom");
+        String userPseudo = request.queryParams("pseudo");
+        String userEmail = request.queryParams("Email");
+        String userPassword = request.queryParams("password");
+        String userTel = request.queryParams("telephone");
         User theUser = loginDao.setNewUser(user);
         modele.put("accountCreation", theUser);
         return Template.render("creationCompte.html", modele);

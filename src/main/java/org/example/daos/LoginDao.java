@@ -63,6 +63,7 @@ public class LoginDao {
             user.setNom(resultSet.getString(4));
             user.setPrenom(resultSet.getString(5));
             user.setEmail(resultSet.getString(6));
+            user.setTelephone(resultSet.getString(7));
 
             System.out.println(resultSet.getString(2));
 
