@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class LoginDao {
 
     public User setNewUser (User user){
@@ -22,7 +23,7 @@ public class LoginDao {
         Connection connection = db.getConnection();
         try {
             PreparedStatement statement = connection.prepareStatement("INSERT INTO utilisateurs (pseudo, mot_de_passe, nom, prenom, email, telephone) VALUES (?,?,?,?,?,?) ");
-            statement.setString(1,"coucou" );
+            statement.setString(1, user.setPseudo());
            statement.setString(2, user.getPassword());
            statement.setString(3, user.getNom());
            statement.setString(4, user.getPrenom());

@@ -4,12 +4,15 @@ import org.example.core.Template;
 import org.example.daos.LoginDao;
 import org.example.modeles.Evenement;
 import org.example.modeles.User;
+import org.example.utils.URLUtils;
 import spark.Request;
 import spark.Response;
 
 import java.sql.SQLOutput;
 import java.util.HashMap;
 import java.util.Map;
+
+
 
 public class LoginControler {
 
@@ -27,7 +30,7 @@ public class LoginControler {
 
     public String displayLogout (Request request, Response response){
         Map<String, Object > modele = new HashMap<>();
-        User firstUser = new User(1, "email@email.fr", "motDePasse");
+        User firstUser = new User();
         System.out.println(firstUser);
         modele.put("firstUser", firstUser);
         return Template.render("logout.html", modele);
@@ -55,34 +58,32 @@ public class LoginControler {
 
     public String createAccount (Request request, Response response){
         Map<String, Object > modele = new HashMap<>();
-        String firstPrenom = request.queryParams("prenom");
-        String firstNom = request.queryParams("nom");
-        String firstPseudo = request.queryParams("pseudo");
-        String firstPassword = request.queryParams("password");
-        String firstTelephone = request.queryParams("telephone");
-        String firstEmail = request.queryParams("email");
+        Map<String, String> query = URLUtils.decodeQuery(request.body());
+
         User user = new User();
 
-
-//       user.setPrenom(firstPrenom);
-//
-//      user.setNom(firstNom);
-//
-//       user.setPseudo(firstPseudo);
-//
-//        user.setPassword(firstPseudo);
-//
-//       user.setTelephone(firstTelephone);
-
-//       user.setEmail(firstEmail);
+        String firstPrenom = query.get("prenom");
+        String firstNom = query.get("nom");
+        String firstPseudo = query.get("pseudo");
+        String firstPassword = query.get("password");
+        String firstTelephone = query.get("telephone");
+        String firstEmail = query.get("email");
 
 
+      user.setPrenom(firstPrenom);
 
-         User theUser = loginDao.setNewUser(user);
+      user.setNom(firstNom);
 
-        System.out.println(theUser);
+     user.setPseudo(firstPseudo);
+
+     user.setPassword(firstPassword);
+
+      user.setTelephone(firstTelephone);
+      user.setEmail(firstEmail);
 
 
+
+      User theUser = loginDao.setNewUser(user);
 
 
         modele.put("accountCreation", theUser);

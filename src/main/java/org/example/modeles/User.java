@@ -18,7 +18,7 @@ public class User {
     }
 
 
-    public User(int id, String email, String password) {
+    public User(int id, String pseudo, String password, String nom, String prenom, String email, String telephone) {
         this.id = id;
         this.pseudo=pseudo;
         this.password = password;
@@ -90,4 +90,6 @@ public class User {
                 ", password='" + password + '\'' +
                 '}';
     }
+
+
 }

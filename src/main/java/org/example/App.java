@@ -19,7 +19,7 @@ public class App {
         Spark.get("/login", (req, res ) ->loginControler.displayLogin(req, res));
         Spark.get("/logout", (req, res ) ->loginControler.displayLogout(req, res));
         Spark.get("/login/account", (req, res)->loginControler.displayAccount(req, res));
-        Spark.get("/login/bienvenu", (req, res)->loginControler.createAccount(req, res));
+        Spark.post("/login/bienvenu", (req, res)->loginControler.createAccount(req, res));
         EventControler eventControler= new EventControler();
         Spark.get ("/evenements",(req, res)->eventControler.displayEvents(req, res));
         Spark.get ("/evenements/details", (req, res)->eventControler.eventDetails(req,res));
@@ -29,6 +29,12 @@ public class App {
         Spark.get("/", (req, res) -> {
             System.out.println("coucou");
             return Template.render("home.html", new HashMap<>());
+        });
+
+        Spark.post("/bienvenu", (req, res) -> {
+            System.out.println("coucou");
+            loginControler.displayAccount(req, res);
+            return Template.render("creationCompte.html", new HashMap<>());
         });
 
 
