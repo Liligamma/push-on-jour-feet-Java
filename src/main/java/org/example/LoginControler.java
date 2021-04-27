@@ -53,16 +53,31 @@ public class LoginControler {
     }
 
     public String createAccount (Request request, Response response){
-        User user = new User();
         Map<String, Object > modele = new HashMap<>();
-        String userPrenom = request.queryParams("prenom");
-        String userNom = request.queryParams("nom");
-        String userPseudo = request.queryParams("pseudo");
-        String userEmail = request.queryParams("Email");
-        String userPassword = request.queryParams("password");
-        String userTel = request.queryParams("telephone");
+        User user = new User();
+        String prenom = request.queryParams("prenom");
+        user.setPrenom(prenom);
+        String nom = request.queryParams("nom");
+        user.setNom(nom);
+        String pseudo = request.queryParams("pseudo");
+        user.setPseudo(pseudo);
+        String password = request.queryParams("password");
+        user.setPassword(password);
+        String telephone = request.queryParams("telephone");
+        user.setTelephone(telephone);
+        String email = request.queryParams("email");
+        user.setEmail(email);
+
+
         User theUser = loginDao.setNewUser(user);
+
+        System.out.println(prenom);
+
+
+
+
         modele.put("accountCreation", theUser);
+
         return Template.render("creationCompte.html", modele);
     }
 

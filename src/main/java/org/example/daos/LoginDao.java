@@ -16,25 +16,29 @@ public class LoginDao {
 
     public User setNewUser (User user){
 
+
+
         Database db =Database.get();
         Connection connection = db.getConnection();
         try {
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO utilisateurs (pseudo, mot_de_passe, nom, prenom, email, telephone) VALUES (?, ?, ?, ?, ?, ? ) ");
-            statement.setString(1, user.getPseudo());
-            statement.setString(2, user.getPassword());
-            statement.setString(3, user.getNom());
-            statement.setString(4, user.getPrenom());
-            statement.setString(5, user.getEmail());
-            statement.setString(6, user.getTelephone());
-            ResultSet resultSet = statement.executeQuery();
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO utilisateurs (pseudo, mot_de_passe, nom, prenom, email, telephone) VALUES (?,?,?,?,?,?) ");
+            statement.setString(1,"coucou" );
+           statement.setString(2, user.getPassword());
+           statement.setString(3, user.getNom());
+           statement.setString(4, user.getPrenom());
+           statement.setString(5, user.getEmail());
+           statement.setString(6, user.getTelephone());
+           statement.executeUpdate();
 
-//           resultSet.next();
-//           user.setId(resultSet.getInt(1));
-//           user.setPseudo(resultSet.getString(2));
-//           user.setPassword(resultSet.getString(3));
-//           user.setNom(resultSet.getString(4));
-//           user.setPrenom(resultSet.getString(5));
-//           user.setEmail(resultSet.getString(6));
+//              resultSet.next();
+//            user1.setId(resultSet.getInt(1));
+//            user1.setPseudo(resultSet.getString(2));
+//          user1.setPassword(resultSet.getString(3));
+//          user1.setNom(resultSet.getString(4));
+//           user1.setPrenom(resultSet.getString(5));
+//            user1.setEmail(resultSet.getString(6));
+//
+//            System.out.println(resultSet);
 
 
         } catch (SQLException throwables) {

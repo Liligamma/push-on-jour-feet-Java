@@ -5,13 +5,13 @@ package org.example.modeles;
 public class User {
 
     int id;
-    String pseudo;
+    public String pseudo;
     public String password;
-    String nom;
-    String prenom;
+    public String nom;
+    public String prenom;
     public String  email;
-    String telephone;
-    String role;
+    public String telephone;
+    public String role;
 
     public User(){
 
