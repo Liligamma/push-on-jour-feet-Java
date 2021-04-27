@@ -45,6 +45,7 @@ public class LoginControler {
 
         System.out.println(firstUsers);
         System.out.println(userPseudo);
+        System.out.println(userMdp);
 
 
         modele.put("account", firstUsers);
@@ -54,24 +55,32 @@ public class LoginControler {
 
     public String createAccount (Request request, Response response){
         Map<String, Object > modele = new HashMap<>();
+        String firstPrenom = request.queryParams("prenom");
+        String firstNom = request.queryParams("nom");
+        String firstPseudo = request.queryParams("pseudo");
+        String firstPassword = request.queryParams("password");
+        String firstTelephone = request.queryParams("telephone");
+        String firstEmail = request.queryParams("email");
         User user = new User();
-        String prenom = request.queryParams("prenom");
-        user.setPrenom(prenom);
-        String nom = request.queryParams("nom");
-        user.setNom(nom);
-        String pseudo = request.queryParams("pseudo");
-        user.setPseudo(pseudo);
-        String password = request.queryParams("password");
-        user.setPassword(password);
-        String telephone = request.queryParams("telephone");
-        user.setTelephone(telephone);
-        String email = request.queryParams("email");
-        user.setEmail(email);
 
 
-        User theUser = loginDao.setNewUser(user);
+//       user.setPrenom(firstPrenom);
+//
+//      user.setNom(firstNom);
+//
+//       user.setPseudo(firstPseudo);
+//
+//        user.setPassword(firstPseudo);
+//
+//       user.setTelephone(firstTelephone);
 
-        System.out.println(prenom);
+//       user.setEmail(firstEmail);
+
+
+
+         User theUser = loginDao.setNewUser(user);
+
+        System.out.println(theUser);
 
 
 

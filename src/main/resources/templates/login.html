@@ -16,7 +16,7 @@
         <!--         Création du bloc inscription -->
          <div class="col-12 col-lg-6">
              <h2> Je n'ai pas encore de compte </h2>
-             <form id="formulaire d'inscription" name="Formulaire" method="GET" action="#" >
+             <form id="formulaire d'inscription" name="Formulaire" method="POST" action="#">
              <div class="form-group">
                  <label for="nom"> Nom <input type="text" name="nom"  required="required" class="form-control" id="nom" > </label>
                  <label for="prenom"> Prénom <input type="text" name="prenom"  required="required" class="form-control" id="prenom"/></label>
@@ -32,8 +32,8 @@
 
                   <br>
 
-                 <button  class="btn btn-danger" type="button" onClick="location.href ='login/bienvenu?pseudo='+ document.getElementById('pseudo').value"> S'inscrire </button>
-
+                 <button  class="btn btn-danger" type="submit" > S'inscrire </button>
+<!--                 onClick="location.href ='login/bienvenu?pseudo='+ document.getElementById('pseudo').value + 'prenom'= document.getElementById('prenom').value + 'nom' = document.getElementById('nom').value  + 'password'= document.getElementById('password').value + 'telephone' = document.getElementById('telephone').value + 'email' = document.getElementById('email').value"-->
 
              </div>
              </form>
@@ -42,14 +42,16 @@
          <div class="col-12 col-lg-6">
              <h2> J'ai déja un compte, je me connecte </h2>
 
-             <form id="formulaireInscription" name="formulaire" method="POST" action="#" >
+             <form id="formulaireInscription" name="formulaire" method="POST" action="login/account?user_pseudo=" >
                  <div class="form-group">
                      <label> Pseudo <input type="text" name="user_pseudo" required="required" class="form-control" id="identifiant"/></label>
                      <label for="password"> Mot de passe <input type="password" name ="mdp" required="required" class="form-control" id="password"/></label>
                      <br>
 
 
-                         <button class="btn btn-danger" type="button" id="open" onClick="location.href ='login/account?user_Pseudo=' + document.getElementById('identifiant').value"> Se connecter </button>
+                         <button class="btn btn-danger" type="submit" id="open" > Se connecter </button>
+
+<!--                     onClick="location.href ='login/account?user_Pseudo=' + document.getElementById('identifiant').value-->
 
                  </div>
 
