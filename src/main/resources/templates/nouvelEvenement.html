@@ -1,0 +1,41 @@
+#parse("base.html")
+#@mainLayout()
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <h1>Créer une sortie </h1>
+        </div>
+    </div>
+
+    <div class="row" style="height:60px;">
+        <div class="col-12"></div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 col-lg-6">
+            <form id="formulaire d'inscription" name="Formulaire" method="POST" action="#">
+                <div class="form-group">
+                    <label for="nom"> Nom <input type="text" name="nom"  required="required" class="form-control" id="nom" > </label>
+                    <label for="prenom"> Prénom <input type="text" name="prenom"  required="required" class="form-control" id="prenom"/></label>
+                    <label for="pseudo"> Pseudo <input type="text" name="pseudo"  required="required" class="form-control" id="pseudo"/></label>
+                    <label for="email"> Adresse E-mail  <input type="email" name="email" required="required" class="form-control" id="email"/> </label>
+                    <label for="telephone"> Téléphone <input type="text" name="telephone" class="form-control" id="telephone"/></label>
+                    <label for="password"> Mot de passe<input type="password" name="password"  required="required" minlength="8" required class="form-control" id="password "/>
+                        <div class="password-icon">
+                            <i data-feather="eye"></i>
+                            <i data-feather="eye-off"></i>
+                        </div>
+                    </label>
+
+                    <br>
+
+                    <button  class="btn btn-danger" type="submit" > S'inscrire </button>
+                    <!--                 onClick="location.href ='login/bienvenu?pseudo='+ document.getElementById('pseudo').value + 'prenom'= document.getElementById('prenom').value + 'nom' = document.getElementById('nom').value  + 'password'= document.getElementById('password').value + 'telephone' = document.getElementById('telephone').value + 'email' = document.getElementById('email').value"-->
+
+                </div>
+            </form>
+        </div>
+
+
+#end

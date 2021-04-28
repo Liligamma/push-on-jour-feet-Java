@@ -1,6 +1,7 @@
 package org.example;
 
 
+import org.apache.commons.lang.ObjectUtils;
 import org.example.core.Template;
 import org.example.daos.EvenementDao;
 import org.example.modeles.Evenement;
@@ -42,6 +43,12 @@ public class EventControler {
   modele.put("detailEvenement", firstEvent);
 //  on retourne la page HTML de référence pour afficher les détails de l'événement 
   return  Template.render("detailsEvenements.html", modele);
+
  }
+
+ public String createEvent (Request request, Response response){
+
+  return null;
+ };
 
 }

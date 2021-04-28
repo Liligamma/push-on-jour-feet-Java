@@ -29,25 +29,6 @@ public class LoginDao {
            statement.setString(6, user.telephone);
             int resultSet = statement.executeUpdate();
 
-//            resultSet.next();
-//
-//            user.setId(resultSet.getInt(1));
-//            user.setPseudo(resultSet.getString(2));
-//            user.setPassword(resultSet.getString(3));
-//            user.setNom(resultSet.getString(4));
-//            user.setPrenom(resultSet.getString(5));
-//            user.setEmail(resultSet.getString(6));
-//            user.setTelephone(resultSet.getString(7));
-
-//              resultSet.next();
-//            user1.setId(resultSet.getInt(1));
-//            user1.setPseudo(resultSet.getString(2));
-//          user1.setPassword(resultSet.getString(3));
-//          user1.setNom(resultSet.getString(4));
-//           user1.setPrenom(resultSet.getString(5));
-//            user1.setEmail(resultSet.getString(6));
-//
-//            System.out.println(resultSet);
 
 
         } catch (SQLException throwables) {
