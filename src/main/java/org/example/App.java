@@ -23,6 +23,7 @@ public class App {
         EventControler eventControler= new EventControler();
         Spark.get ("/evenements",(req, res)->eventControler.displayEvents(req, res));
         Spark.get ("/evenements/details", (req, res)->eventControler.eventDetails(req,res));
+
         HomeControler homeControler= new HomeControler();
         Spark.get ("/home",(req, res)->homeControler.displayHome(req, res));
         
@@ -35,6 +36,12 @@ public class App {
             System.out.println("coucou");
             loginControler.createAccount(req, res);
             return Template.render("creationCompte.html", new HashMap<>());
+            });
+
+            Spark.post("evenements/nouveau", (req, res) -> {
+                System.out.println("coucou");
+                eventControler.createEvent (req, res);
+                return Template.render("nouvelEvenement.html", new HashMap<>());
         });
 
 

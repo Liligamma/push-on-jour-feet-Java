@@ -47,8 +47,9 @@ public class EventControler {
  }
 
  public String createEvent (Request request, Response response){
+  Map<String, Object > modele = new HashMap<>();
 
-  return null;
- };
+  return Template.render("nouvelEvenement.html", modele);
+ }
 
 }
