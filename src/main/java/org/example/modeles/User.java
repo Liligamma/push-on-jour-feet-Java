@@ -92,4 +92,12 @@ public class User {
     }
 
 
+    public String setPseudo() {
+        return null;
+    }
+
+    {
+
+
+    };
 }

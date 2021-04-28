@@ -70,6 +70,8 @@ public class LoginControler {
         String firstEmail = query.get("email");
 
 
+
+
       user.setPrenom(firstPrenom);
 
       user.setNom(firstNom);
@@ -83,10 +85,10 @@ public class LoginControler {
 
 
 
-      User theUser = loginDao.setNewUser(user);
+     User theUser = loginDao.setNewUser(user);
 
 
-        modele.put("accountCreation", theUser);
+       modele.put("accountCreation", theUser);
 
         return Template.render("creationCompte.html", modele);
     }
