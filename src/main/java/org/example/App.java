@@ -18,7 +18,7 @@ public class App {
         LoginControler loginControler = new LoginControler();
         Spark.get("/login", (req, res ) ->loginControler.displayLogin(req, res));
         Spark.get("/logout", (req, res ) ->loginControler.displayLogout(req, res));
-        Spark.get("/login/account", (req, res)->loginControler.displayAccount(req, res));
+
 //        Spark.post("/login/bienvenu", (req, res)->loginControler.createAccount(req, res));
         EventControler eventControler= new EventControler();
         Spark.get ("/evenements",(req, res)->eventControler.displayEvents(req, res));
@@ -38,6 +38,14 @@ public class App {
             loginControler.createAccount(req, res);
             return Template.render("creationCompte.html", new HashMap<>());
             });
+
+        Spark.post("/account", (req, res)-> {
+            System.out.println("coucou");
+            loginControler.displayAccount(req, res);
+            return Template.render("monCompte.html", new HashMap<>());
+        });
+
+
 
         Spark.post("/nouveau", (req, res) -> {
             System.out.println("coucou");
