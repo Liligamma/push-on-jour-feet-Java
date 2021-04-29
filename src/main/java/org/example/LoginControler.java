@@ -70,16 +70,10 @@ public class LoginControler {
         String firstEmail = query.get("email");
 
 
-
-
       user.setPrenom(firstPrenom);
-
       user.setNom(firstNom);
-
-     user.setPseudo(firstPseudo);
-
-     user.setPassword(firstPassword);
-
+      user.setPseudo(firstPseudo);
+      user.setPassword(firstPassword);
       user.setTelephone(firstTelephone);
       user.setEmail(firstEmail);
 

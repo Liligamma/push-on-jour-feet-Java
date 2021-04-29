@@ -46,10 +46,16 @@ public class EventControler {
 
  }
 
+ public String displayEventForm (Request request, Response response) {
+  Map<String, Object> modele = new HashMap<>();
+
+  return Template.render("nouvelEvenement.html", modele);
+ }
+
  public String createEvent (Request request, Response response){
   Map<String, Object > modele = new HashMap<>();
 
-  return Template.render("nouvelEvenement.html", modele);
+  return Template.render("confirmationNewEvent.html", modele);
  }
 
 }
