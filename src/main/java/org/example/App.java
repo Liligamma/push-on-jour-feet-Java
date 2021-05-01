@@ -39,7 +39,7 @@ public class App {
             return Template.render("creationCompte.html", new HashMap<>());
             });
 
-        Spark.post("/account", (req, res)-> {
+        Spark.get("/account", (req, res)-> {
             System.out.println("coucou");
             loginControler.displayAccount(req, res);
             return Template.render("monCompte.html", new HashMap<>());

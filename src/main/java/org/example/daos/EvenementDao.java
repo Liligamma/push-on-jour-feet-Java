@@ -2,6 +2,7 @@ package org.example.daos;
 
 import org.example.core.Database;
 import org.example.modeles.Evenement;
+import org.example.modeles.User;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -32,6 +33,28 @@ public class EvenementDao {
             throwables.printStackTrace();
         }
         return evenement;
+    }
+
+    public User getOrganisateur (int id){
+        User organisateur = new User();
+
+        Database db =Database.get();
+        Connection connection = db.getConnection();
+        try {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM utilisateurs INNER JOIN evenements ON utilisateurs.id = evenements.organisateur_id WHERE evenements.id =?");
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            resultSet.next();
+            
+
+
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+
+        return organisateur;
     }
 
     public List<Evenement> getAllEvenements(){

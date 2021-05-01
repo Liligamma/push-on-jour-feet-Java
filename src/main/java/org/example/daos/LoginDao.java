@@ -5,6 +5,7 @@ import org.example.core.Database;
 import org.example.modeles.Evenement;
 import org.example.modeles.User;
 
+import javax.swing.*;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -45,13 +46,19 @@ public class LoginDao {
         User user = new User();
         Database db =Database.get();
         Connection connection = db.getConnection();
+
         try {
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM utilisateurs WHERE pseudo =? AND mot_de_passe =?");
             statement.setString(1, pseudo);
             statement.setString(2,mdp );
             ResultSet resultSet = statement.executeQuery();
             resultSet.next();
-//   
+
+            if (!resultSet.next()){
+
+
+            }
+//
 //            user.setId(resultSet.getInt(1));
 //            user.setPseudo(resultSet.getString(2));
 //            user.setPassword(resultSet.getString(3));
@@ -71,5 +78,7 @@ public class LoginDao {
 
         return  user;
     }
+
+
 
 }
