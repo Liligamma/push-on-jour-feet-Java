@@ -54,25 +54,48 @@ public class EvenementDao {
     }
 
 
-    public User getParticipants (int id){
+    public List<User> getParticipants (int id){
         List<User> participants = new ArrayList<User>();
         Database db =Database.get();
-        Connection connection = db.getConnection();
-        try {
-            PreparedStatement statement = connection.prepareStatement("SELECT *FROM utilisateurs  INNER JOIN evenements_utilisateurs ON utilisateurs.id = evenements_utilisateurs.utilisateurs_id WHERE evenements_utilisateurs.evenements_id=?");
-            statement.setInt(1, id);
+       Connection connection = db.getConnection();
+       try {
+           PreparedStatement statement = connection.prepareStatement("SELECT * FROM utilisateurs  INNER JOIN evenements_utilisateurs ON utilisateurs.id = evenements_utilisateurs.utilisateurs_id WHERE evenements_utilisateurs.evenements_id=?");
+          statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()== true) {
                 User p = mapUser(resultSet);
                 participants.add(p);
 
-            }
+           }
 
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-         return (User) participants;
+       } catch (SQLException throwables) {
+           throwables.printStackTrace();
+       }
+         return participants;
     }
+
+
+//    public User getParticipants (int id){
+//        User participants = new User();
+//
+//        Database db =Database.get();
+//        Connection connection = db.getConnection();
+//        try {
+//            PreparedStatement statement = connection.prepareStatement("SELECT * FROM utilisateurs  INNER JOIN evenements_utilisateurs ON utilisateurs.id = evenements_utilisateurs.utilisateurs_id WHERE evenements_utilisateurs.evenements_id=?");
+//            statement.setInt(1, id);
+//            ResultSet resultSet = statement.executeQuery();
+//            while (resultSet.next()== true){
+//                participants = mapUser(resultSet);
+//            }
+//
+//
+//        } catch (SQLException throwables) {
+//            throwables.printStackTrace();
+//        }
+//
+//        return participants;
+//    }
+
 
     public List<Evenement> getAllEvenements(){
         List<Evenement> evenements = new ArrayList<>();

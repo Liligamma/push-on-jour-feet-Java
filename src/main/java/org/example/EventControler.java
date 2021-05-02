@@ -8,6 +8,8 @@ import org.example.modeles.Evenement;
 import org.example.modeles.User;
 import spark.Request;
 import spark.Response;
+
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -39,15 +41,17 @@ public class EventControler {
   int eventid = Integer.parseInt(eventIdString);
   Evenement firstEvent= evenementDao.getEvenementById(eventid);
   User orgaEvent = evenementDao.getOrganisateur(eventid);
-//  List <User> ListeParticipants = evenementDao.getParticipants(eventid);
-  
+  List<User> listeParticipants = evenementDao.getParticipants(eventid);
+
   System.out.println(orgaEvent.getPseudo());
+  System.out.println(listeParticipants);
+
 
 
 // on envoie au HTML l'index de l'événement en question à l'aide de la méthode put
   modele.put("detailEvenement", firstEvent);
   modele.put("organisateur", orgaEvent);
-  modele.put("participants", )
+  modele.put("ListeParticipants", listeParticipants);
 //  on retourne la page HTML de référence pour afficher les détails de l'événement 
   return  Template.render("detailsEvenements.html", modele);
 

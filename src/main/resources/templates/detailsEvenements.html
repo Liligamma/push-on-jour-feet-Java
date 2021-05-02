@@ -17,9 +17,15 @@
                 <h4 class="text-center">Organisateur : </h4>
                 <div class="col-12 text-center">$organisateur.getPseudo()</div> <br>
                 <h4 class="text-center">Participants : </h4>
+
+                #foreach ($participants in $ListeParticipants)
+
+               <div class="col-12 text-center"> $participants.getPseudo()</div> <br>
+                #end
                 <div class="row justify-content-center">
                     <button class ="btn btn-danger" type="button" >Participer</button>
                 </div>
+
 
             </div>
         </div>
