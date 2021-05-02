@@ -5,6 +5,7 @@ import org.apache.commons.lang.ObjectUtils;
 import org.example.core.Template;
 import org.example.daos.EvenementDao;
 import org.example.modeles.Evenement;
+import org.example.modeles.User;
 import spark.Request;
 import spark.Response;
 import java.util.ArrayList;
@@ -37,10 +38,16 @@ public class EventControler {
   String eventIdString = request.queryParamOrDefault("detail_id", "0");
   int eventid = Integer.parseInt(eventIdString);
   Evenement firstEvent= evenementDao.getEvenementById(eventid);
+  User orgaEvent = evenementDao.getOrganisateur(eventid);
+//  List <User> ListeParticipants = evenementDao.getParticipants(eventid);
+  
+  System.out.println(orgaEvent.getPseudo());
 
 
 // on envoie au HTML l'index de l'événement en question à l'aide de la méthode put
   modele.put("detailEvenement", firstEvent);
+  modele.put("organisateur", orgaEvent);
+  modele.put("participants", )
 //  on retourne la page HTML de référence pour afficher les détails de l'événement 
   return  Template.render("detailsEvenements.html", modele);
 

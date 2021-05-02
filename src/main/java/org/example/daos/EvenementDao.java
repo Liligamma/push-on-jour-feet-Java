@@ -45,16 +45,33 @@ public class EvenementDao {
             statement.setInt(1, id);
             ResultSet resultSet = statement.executeQuery();
             resultSet.next();
-            
-
-
+            organisateur=mapUser(resultSet);
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
-
-
         return organisateur;
+    }
+
+
+    public User getParticipants (int id){
+        List<User> participants = new ArrayList<User>();
+        Database db =Database.get();
+        Connection connection = db.getConnection();
+        try {
+            PreparedStatement statement = connection.prepareStatement("SELECT *FROM utilisateurs  INNER JOIN evenements_utilisateurs ON utilisateurs.id = evenements_utilisateurs.utilisateurs_id WHERE evenements_utilisateurs.evenements_id=?");
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()== true) {
+                User p = mapUser(resultSet);
+                participants.add(p);
+
+            }
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+         return (User) participants;
     }
 
     public List<Evenement> getAllEvenements(){
@@ -86,6 +103,13 @@ public class EvenementDao {
         e.setOrganisateurId(resultSet.getInt(6));
         e.setCommentairesEvenement(resultSet.getString(7));
        return e;
+    }
+
+    private User mapUser (ResultSet resultSet) throws SQLException{
+        User u = new User();
+        u.setId(resultSet.getInt(1));
+        u.setPseudo(resultSet.getString(2));
+        return u;
     }
 
 
