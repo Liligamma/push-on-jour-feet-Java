@@ -14,7 +14,7 @@ public class Evenement {
     String commentairesEvenement;
     int participants;
 
-    public Evenement(int id, String dateEvenement, double latitude, double longitude, String nomEvenement, int organisateurId, String commentairesEvenement, int participants) {
+    public Evenement(int id, String dateEvenement, double latitude, double longitude, String nomEvenement, int organisateurId, String commentairesEvenement) {
         this.id = id;
         this.dateEvenement = dateEvenement;
         this.latitude = latitude;
@@ -22,7 +22,7 @@ public class Evenement {
         this.nomEvenement = nomEvenement;
         this.organisateurId = organisateurId;
         this.commentairesEvenement = commentairesEvenement;
-        this.participants = participants;
+
     }
 
     public Evenement(){
