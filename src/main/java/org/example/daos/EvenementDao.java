@@ -120,6 +120,7 @@ public class EvenementDao {
         e.setNomEvenement(resultSet.getString(5));
         e.setOrganisateurId(resultSet.getInt(6));
         e.setCommentairesEvenement(resultSet.getString(7));
+        e.setTypeEvent(resultSet.getBoolean(8));
        return e;
     }
 

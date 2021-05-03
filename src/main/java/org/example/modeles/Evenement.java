@@ -11,17 +11,20 @@ public class Evenement {
     double longitude;
     String nomEvenement;
     int organisateurId;
+    boolean typeEvent;
     String commentairesEvenement;
     int participants;
 
-    public Evenement(int id, String dateEvenement, double latitude, double longitude, String nomEvenement, int organisateurId, String commentairesEvenement) {
+    public Evenement(int id, String dateEvenement, double latitude, double longitude, String nomEvenement, int organisateurId, boolean typeEvent ,String commentairesEvenement) {
         this.id = id;
         this.dateEvenement = dateEvenement;
         this.latitude = latitude;
         this.longitude = longitude;
         this.nomEvenement = nomEvenement;
         this.organisateurId = organisateurId;
+        this.typeEvent = typeEvent;
         this.commentairesEvenement = commentairesEvenement;
+
 
     }
 
@@ -75,6 +78,14 @@ public class Evenement {
 
     public void setOrganisateurId(int organisateurId) {
         this.organisateurId = organisateurId;
+    }
+
+    public boolean gettypeEvent() {
+        return typeEvent;
+    }
+
+    public void setTypeEvent(boolean typeEvent) {
+        this.typeEvent = typeEvent;
     }
 
     public String getCommentairesEvenement() {
