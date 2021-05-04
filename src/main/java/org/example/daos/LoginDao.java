@@ -42,20 +42,36 @@ public class LoginDao {
 
     }
 
-    public static User getUserByPseudo(String pseudo, String mdp){
-        User user = new User();
+    public static User getUserByPseudo(User user){
+
         Database db =Database.get();
         Connection connection = db.getConnection();
+        boolean flag = false;
 
         try {
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM utilisateurs WHERE pseudo =? AND mot_de_passe =?");
-            statement.setString(1, pseudo);
-            statement.setString(2,mdp );
+            statement.setString(1, user.pseudo);
+            statement.setString(2, user.password);
             ResultSet resultSet = statement.executeQuery();
             resultSet.next();
 
-            if (!resultSet.next()){
+            while (resultSet.next()){
 
+                String rightPseudo = resultSet.getString("pseudo");
+                String rightPsw = resultSet.getString("mot_de_passe");
+
+                if (user.pseudo.equals(rightPseudo)&&(user.password.equals(rightPsw))){
+                    flag=true;
+
+                    System.out.println("L'utilisateur existe");
+
+                }
+                resultSet.close();
+
+                if(!flag) {
+                    System.out.println("ca ne marche pas");
+                }
+;
 
             }
 //
@@ -70,14 +86,13 @@ public class LoginDao {
 //            System.out.println(resultSet.getString(2));
 
 
-
-
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
 
         return  user;
     }
+
 
 
 

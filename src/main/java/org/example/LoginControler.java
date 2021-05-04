@@ -41,10 +41,17 @@ public class LoginControler {
         Map<String, Object > modele = new HashMap<>();
         Map<String, String> query = URLUtils.decodeQuery(request.body());
 
+        User user = new User();
+
         String userPseudo = query.get("user_Pseudo");
         String userMdp = query.get("mdp");
 
-        User firstUsers= loginDao.getUserByPseudo(userPseudo, userMdp);
+        user.setPseudo(userPseudo);
+        user.setPassword(userMdp);
+
+        User firstUsers= loginDao.getUserByPseudo(user);
+
+
 
         modele.put("account", firstUsers);
 
