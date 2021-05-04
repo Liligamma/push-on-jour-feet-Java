@@ -46,6 +46,8 @@ public class LoginControler {
 
         User firstUsers= loginDao.getUserByPseudo(userPseudo, userMdp);
 
+
+
         modele.put("account", firstUsers);
 
         return Template.render("monCompte.html", modele);

@@ -44,6 +44,7 @@ public class LoginDao {
 
     public static User getUserByPseudo(String pseudo, String mdp){
         User user = new User();
+        boolean flag = false;
         Database db =Database.get();
         Connection connection = db.getConnection();
 
@@ -52,22 +53,41 @@ public class LoginDao {
             statement.setString(1, pseudo);
             statement.setString(2,mdp );
             ResultSet resultSet = statement.executeQuery();
-            resultSet.next();
 
-            if (!resultSet.next()){
+            while (resultSet.next()==true){
+                String myPseudo = resultSet.getString(2);
+                String myPassword = resultSet.getString(3);
 
+                if (pseudo.equals(myPseudo) && mdp.equals(myPassword)){
+//                    flag = true;
+                    System.out.println("ca fonctionne");
+                    user.setId(resultSet.getInt(1));
+                    user.setPseudo(resultSet.getString(2));
+                    user.setPassword(resultSet.getString(3));
+                    user.setNom(resultSet.getString(4));
+                    user.setPrenom(resultSet.getString(5));
+                    user.setEmail(resultSet.getString(6));
+                    user.setTelephone(resultSet.getString(7));
 
+                }
+                else {
+                    System.out.println("erreur");
+                }
             }
-//
-//            user.setId(resultSet.getInt(1));
-//            user.setPseudo(resultSet.getString(2));
-//            user.setPassword(resultSet.getString(3));
-//            user.setNom(resultSet.getString(4));
-//            user.setPrenom(resultSet.getString(5));
-//            user.setEmail(resultSet.getString(6));
-//            user.setTelephone(resultSet.getString(7));
 
-//            System.out.println(resultSet.getString(2));
+//            else {
+//                user.setId(resultSet.getInt(1));
+//                user.setPseudo(resultSet.getString(2));
+//                user.setPassword(resultSet.getString(3));
+//                user.setNom(resultSet.getString(4));
+//                user.setPrenom(resultSet.getString(5));
+//                user.setEmail(resultSet.getString(6));
+//                user.setTelephone(resultSet.getString(7));
+//
+//            }
+
+
+           System.out.println(resultSet.getString(2));
 
 
 
