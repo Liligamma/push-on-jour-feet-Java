@@ -42,25 +42,27 @@ public class LoginDao {
 
     }
 
-    public static User getUserByPseudo(User user){
+    public static User getUserByPseudo(String pseudo, String password){
 
         Database db =Database.get();
         Connection connection = db.getConnection();
+        User myUser = new User();
         boolean flag = false;
 
         try {
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM utilisateurs WHERE pseudo =? AND mot_de_passe =?");
-            statement.setString(1, user.pseudo);
-            statement.setString(2, user.password);
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM utilisateurs WHERE pseudo =?");
+            statement.setString(1, pseudo);
             ResultSet resultSet = statement.executeQuery();
             resultSet.next();
+            myUser= mapUser(resultSet);
 
-            while (resultSet.next()){
 
-                String rightPseudo = resultSet.getString("pseudo");
-                String rightPsw = resultSet.getString("mot_de_passe");
+            String rightPseudo = resultSet.getString("pseudo");
+            String rightPsw = resultSet.getString("mot_de_passe");
 
-                if (user.pseudo.equals(rightPseudo)&&(user.password.equals(rightPsw))){
+
+
+                if (pseudo.equals(rightPseudo)&&(password.equals(rightPsw))){
                     flag=true;
 
                     System.out.println("L'utilisateur existe");
@@ -73,7 +75,7 @@ public class LoginDao {
                 }
 ;
 
-            }
+
 //
 //            user.setId(resultSet.getInt(1));
 //            user.setPseudo(resultSet.getString(2));
@@ -90,10 +92,15 @@ public class LoginDao {
             throwables.printStackTrace();
         }
 
-        return  user;
+        return  myUser;
     }
 
 
-
+    private static User mapUser (ResultSet resultSet) throws SQLException{
+        User u = new User();
+        u.setId(resultSet.getInt(1));
+        u.setPseudo(resultSet.getString(2));
+        return u;
+    }
 
 }
