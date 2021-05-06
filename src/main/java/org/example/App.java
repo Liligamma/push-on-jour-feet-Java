@@ -45,6 +45,12 @@ public class App {
             return Template.render("monCompte.html", new HashMap<>());
         });
 
+        Spark.post("/error", (req, res)-> {
+            System.out.println("coucou");
+            loginControler.displayAccount(req, res);
+            return Template.render("loginIssue.html", new HashMap<>());
+        });
+
 
 
         Spark.post("/nouveau", (req, res) -> {

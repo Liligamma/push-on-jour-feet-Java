@@ -2,6 +2,7 @@ package org.example.daos;
 
 
 import org.example.core.Database;
+import org.example.core.Template;
 import org.example.modeles.Evenement;
 import org.example.modeles.User;
 
@@ -47,42 +48,43 @@ public class LoginDao {
         boolean flag = false;
         Database db =Database.get();
         Connection connection = db.getConnection();
+        User myUser = new User();
+        User notUser= new User();
+        boolean flag = false;
 
         try {
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM utilisateurs WHERE pseudo =? AND mot_de_passe =?");
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM utilisateurs WHERE pseudo =? OR mot_de_passe=?");
             statement.setString(1, pseudo);
-            statement.setString(2,mdp );
+            statement.setString(2, password);
             ResultSet resultSet = statement.executeQuery();
+            resultSet.next();
 
-            while (resultSet.next()==true){
-                String myPseudo = resultSet.getString(2);
-                String myPassword = resultSet.getString(3);
 
-                if (pseudo.equals(myPseudo) && mdp.equals(myPassword)){
-//                    flag = true;
-                    System.out.println("ca fonctionne");
-                    user.setId(resultSet.getInt(1));
-                    user.setPseudo(resultSet.getString(2));
-                    user.setPassword(resultSet.getString(3));
-                    user.setNom(resultSet.getString(4));
-                    user.setPrenom(resultSet.getString(5));
-                    user.setEmail(resultSet.getString(6));
-                    user.setTelephone(resultSet.getString(7));
+           String rightPseudo = resultSet.getString("pseudo");
+           String rightPsw = resultSet.getString("mot_de_passe");
+
+
+
+
+                if (pseudo.equals(rightPseudo)&&(password.equals(rightPsw))){
+                    flag=true;
+                    myUser= mapUser(resultSet);
+
+                    System.out.println("L'utilisateur existe");
 
                 }
-                else {
-                    System.out.println("erreur");
-                }
-            }
+                resultSet.close();
 
-//            else {
-//                user.setId(resultSet.getInt(1));
-//                user.setPseudo(resultSet.getString(2));
-//                user.setPassword(resultSet.getString(3));
-//                user.setNom(resultSet.getString(4));
-//                user.setPrenom(resultSet.getString(5));
-//                user.setEmail(resultSet.getString(6));
-//                user.setTelephone(resultSet.getString(7));
+                if(!flag) {
+                    System.out.println("ca ne marche pas");
+                    return notUser;
+
+
+
+                }
+;
+
+
 //
 //            }
 
@@ -90,15 +92,22 @@ public class LoginDao {
            System.out.println(resultSet.getString(2));
 
 
-
-
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         }
 
-        return  user;
+        return myUser ;
     }
 
 
+    private static User mapUser (ResultSet resultSet) throws SQLException{
+        User u = new User();
+        u.setId(resultSet.getInt(1));
+        u.setPseudo(resultSet.getString(2));
+        u.setPassword(resultSet.getString(3));
+        u.setNom(resultSet.getString(4));
+        u.setPrenom(resultSet.getString(5));
+        return u;
+    }
 
 }

@@ -41,14 +41,25 @@ public class LoginControler {
         Map<String, Object > modele = new HashMap<>();
         Map<String, String> query = URLUtils.decodeQuery(request.body());
 
-        String userPseudo = query.get("user_Pseudo");
-        String userMdp = query.get("mdp");
+        User userCo = new User();
 
-        User firstUsers= loginDao.getUserByPseudo(userPseudo, userMdp);
+        String userPseudo = query.get("pseudo");
+        String userMdp = query.get("password");
+
+
+       User firstUsers= loginDao.getUserByPseudo(userPseudo, userMdp);
+
 
 
 
         modele.put("account", firstUsers);
+
+        if (firstUsers.prenom==null){
+            return Template.render("loginIssue.html", modele);
+
+
+        }
+
 
         return Template.render("monCompte.html", modele);
     }
@@ -73,6 +84,10 @@ public class LoginControler {
       user.setPassword(firstPassword);
       user.setTelephone(firstTelephone);
       user.setEmail(firstEmail);
+
+        System.out.println(firstPrenom);
+        System.out.println(user);
+        System.out.println(user.telephone);
 
 
 
