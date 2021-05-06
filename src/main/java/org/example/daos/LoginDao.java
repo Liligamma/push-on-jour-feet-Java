@@ -50,12 +50,12 @@ public class LoginDao {
         Connection connection = db.getConnection();
         User myUser = new User();
         User notUser= new User();
-        boolean flag = false;
+
 
         try {
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM utilisateurs WHERE pseudo =? OR mot_de_passe=?");
             statement.setString(1, pseudo);
-            statement.setString(2, password);
+            statement.setString(2, mdp);
             ResultSet resultSet = statement.executeQuery();
             resultSet.next();
 
@@ -66,16 +66,16 @@ public class LoginDao {
 
 
 
-                if (pseudo.equals(rightPseudo)&&(password.equals(rightPsw))){
+                if (pseudo.equals(rightPseudo)&&(mdp.equals(rightPsw))){
                     flag=true;
                     myUser= mapUser(resultSet);
 
                     System.out.println("L'utilisateur existe");
 
                 }
-                resultSet.close();
+//                resultSet.close();
 
-                if(!flag) {
+                if (flag=false) {
                     System.out.println("ca ne marche pas");
                     return notUser;
 
