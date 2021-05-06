@@ -2,6 +2,7 @@ package org.example.daos;
 
 
 import org.example.core.Database;
+import org.example.core.Template;
 import org.example.modeles.Evenement;
 import org.example.modeles.User;
 
@@ -47,23 +48,26 @@ public class LoginDao {
         Database db =Database.get();
         Connection connection = db.getConnection();
         User myUser = new User();
+        User notUser= new User();
         boolean flag = false;
 
         try {
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM utilisateurs WHERE pseudo =?");
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM utilisateurs WHERE pseudo =? OR mot_de_passe=?");
             statement.setString(1, pseudo);
+            statement.setString(2, password);
             ResultSet resultSet = statement.executeQuery();
             resultSet.next();
-            myUser= mapUser(resultSet);
 
 
-            String rightPseudo = resultSet.getString("pseudo");
-            String rightPsw = resultSet.getString("mot_de_passe");
+           String rightPseudo = resultSet.getString("pseudo");
+           String rightPsw = resultSet.getString("mot_de_passe");
+
 
 
 
                 if (pseudo.equals(rightPseudo)&&(password.equals(rightPsw))){
                     flag=true;
+                    myUser= mapUser(resultSet);
 
                     System.out.println("L'utilisateur existe");
 
@@ -72,6 +76,10 @@ public class LoginDao {
 
                 if(!flag) {
                     System.out.println("ca ne marche pas");
+                    return notUser;
+
+
+
                 }
 ;
 
@@ -92,7 +100,7 @@ public class LoginDao {
             throwables.printStackTrace();
         }
 
-        return  myUser;
+        return myUser ;
     }
 
 
@@ -100,6 +108,9 @@ public class LoginDao {
         User u = new User();
         u.setId(resultSet.getInt(1));
         u.setPseudo(resultSet.getString(2));
+        u.setPassword(resultSet.getString(3));
+        u.setNom(resultSet.getString(4));
+        u.setPrenom(resultSet.getString(5));
         return u;
     }
 
