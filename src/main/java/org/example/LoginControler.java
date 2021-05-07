@@ -49,17 +49,32 @@ public class LoginControler {
 
        User firstUsers= loginDao.getUserByPseudo(userPseudo, userMdp);
 
+        System.out.println();
 
+       if(firstUsers==){
+           modele.put("account", firstUsers);
+           return Template.render("loginIssue.html", modele);
+
+
+       }
+
+       if (firstUsers.password.equals(userMdp)){
+
+           request.session(true).attribute("currentUserId",firstUsers.getId());
+
+
+        System.out.println(firstUsers.prenom);}
+
+//        if (firstUsers.prenom==null){
+//
+//            return Template.render("loginIssue.html", modele);
+//
+//
+//        }
         modele.put("account", firstUsers);
 
-        if (firstUsers.prenom==null){
-            return Template.render("loginIssue.html", modele);
-
-
-        }
-
-
         return Template.render("monCompte.html", modele);
+
     }
 
     public String createAccount (Request request, Response response){

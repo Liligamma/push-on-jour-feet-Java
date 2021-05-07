@@ -12,7 +12,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class LoginDao {
@@ -49,7 +51,7 @@ public class LoginDao {
         Connection connection = db.getConnection();
         User myUser = new User();
         User notUser= new User();
-        boolean flag = false;
+
 
         try {
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM utilisateurs WHERE pseudo =? OR mot_de_passe=?");
@@ -66,19 +68,20 @@ public class LoginDao {
 
 
                 if (pseudo.equals(rightPseudo)&&(password.equals(rightPsw))){
-                    flag=true;
+
                     myUser= mapUser(resultSet);
 
                     System.out.println("L'utilisateur existe");
+                    resultSet.close();
 
                 }
-                resultSet.close();
 
-                if(!flag) {
+
+                 else {
                     System.out.println("ca ne marche pas");
+                    Map<String, Object > modele = new HashMap<>();
+                    notUser= mapUser(resultSet);
                     return notUser;
-
-
 
                 }
 ;
