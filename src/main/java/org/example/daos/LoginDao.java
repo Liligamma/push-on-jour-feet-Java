@@ -12,7 +12,9 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class LoginDao {
@@ -71,15 +73,16 @@ public class LoginDao {
                     myUser= mapUser(resultSet);
 
                     System.out.println("L'utilisateur existe");
+                    resultSet.close();
 
                 }
 //                resultSet.close();
 
                 if (flag=false) {
                     System.out.println("ca ne marche pas");
+                    Map<String, Object > modele = new HashMap<>();
+                    notUser= mapUser(resultSet);
                     return notUser;
-
-
 
                 }
 ;
