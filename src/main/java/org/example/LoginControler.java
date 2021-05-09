@@ -51,13 +51,13 @@ public class LoginControler {
 
         System.out.println();
 
-       if(firstUsers==){
-           modele.put("account", firstUsers);
-           return Template.render("loginIssue.html", modele);
+//       if(firstUsers==){
+//           modele.put("account", firstUsers);
+//           return Template.render("loginIssue.html", modele);
 
 
-       }
-
+//       }
+//
        if (firstUsers.password.equals(userMdp)){
 
            request.session(true).attribute("currentUserId",firstUsers.getId());
