@@ -41,7 +41,6 @@ public class LoginControler {
         Map<String, Object > modele = new HashMap<>();
         Map<String, String> query = URLUtils.decodeQuery(request.body());
 
-        User userCo = new User();
 
         String userPseudo = query.get("pseudo");
         String userMdp = query.get("password");
@@ -49,34 +48,27 @@ public class LoginControler {
 
        User firstUsers= loginDao.getUserByPseudo(userPseudo, userMdp);
 
-        System.out.println();
-
-//       if(firstUsers==){
-//           modele.put("account", firstUsers);
-//           return Template.render("loginIssue.html", modele);
 
 
+        if (firstUsers.password.equals(userMdp)){
+           System.out.println("ca marche partie 2");
+           modele.put("authenticationSucceeded", true);
 
-        modele.put("account", firstUsers);
-
-//       }
-//
-       if (firstUsers.password.equals(userMdp)){
-
-           request.session(true).attribute("currentUserId",firstUsers.getId());
+             request.session(true).attribute("currentUserId",firstUsers.getId());
 
 
-        System.out.println(firstUsers.prenom);}
+            modele.put("account", firstUsers);
 
-//        if (firstUsers.prenom==null){
-//
-//            return Template.render("loginIssue.html", modele);
-//
-//
-//        }
-        modele.put("account", firstUsers);
+            return Template.render("monCompte.html", modele);
 
-        return Template.render("monCompte.html", modele);
+       }
+
+        else {
+            modele.put("authenticationFailed", true);
+            System.out.println("ca ne marche pas partie 2");
+            return Template.render("loginIssue.html", modele);
+        }
+
 
     }
 

@@ -47,11 +47,11 @@ public class LoginDao {
 
     public static User getUserByPseudo(String pseudo, String mdp){
         User user = new User();
-        boolean flag = false;
+
         Database db =Database.get();
         Connection connection = db.getConnection();
         User myUser = new User();
-        User notUser= new User();
+
 
 
         try {
@@ -62,6 +62,7 @@ public class LoginDao {
             resultSet.next();
 
 
+
            String rightPseudo = resultSet.getString("pseudo");
            String rightPsw = resultSet.getString("mot_de_passe");
 
@@ -69,20 +70,17 @@ public class LoginDao {
 
 
                 if (pseudo.equals(rightPseudo)&&(mdp.equals(rightPsw))){
-                    flag=true;
                     myUser= mapUser(resultSet);
 
                     System.out.println("L'utilisateur existe");
-                    resultSet.close();
 
                 }
-//                resultSet.close();
 
-                if (flag=false) {
+                else {
                     System.out.println("ca ne marche pas");
                     Map<String, Object > modele = new HashMap<>();
-                    notUser= mapUser(resultSet);
-                    return notUser;
+                    myUser= mapUser(resultSet);
+                    return myUser;
 
                 }
 ;
