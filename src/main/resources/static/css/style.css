@@ -96,20 +96,14 @@ label .password-icon {
     transition: all 0.2s;
 }
 
-.carousel-inner .carousel-item .img {
-    position: absolute;
-    max-width: 100%;
-    height: 500px;
-    min-width: 0;
-}
 
-.carousel-item{
-    width: 100%;
-    height: auto;
-}
 
-#carousel_home{
+#carousel_home img{
     width: 100%;
-    height: 100%;
+    height: 80%;
     display: block;
+}
+
+.concept{
+    display: none;
 }
