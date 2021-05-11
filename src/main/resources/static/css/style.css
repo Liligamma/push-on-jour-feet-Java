@@ -1,10 +1,4 @@
-.col navbar navbar-expand navbar-light{
-    position: center;
-    display: flex;
-}
-.collapse navbar-collapse{
-    position: center;
-}
+
 
 /*@media (min-width: 768px) {*!*/
 /*   .navbar .navbar-nav {*!*/
@@ -27,25 +21,7 @@ img{
 
 }
 
-.col-12 img{
-    text-align: center;
-    display: flex;
-    margin: auto;
-}
 
-.navbar navbar-nav {
-   margin-left: 100px;
-
-}
-
-ul{
-  margin-left: 400px;
-   text-align: center;
-}
-
-li{
-   margin-left: 60px;
-}
 
 .col-12 h1{
     text-align: center;
@@ -108,3 +84,14 @@ label .password-icon {
     display: none;
 }
 
+.li.borderless{
+    border : none;
+}
+
+.carousel-inner carousel-item{
+    margin: auto;
+    display: block;
+    margin-right: auto;
+
+
+}
