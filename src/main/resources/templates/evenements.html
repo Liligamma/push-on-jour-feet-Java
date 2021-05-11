@@ -2,17 +2,17 @@
 #@mainLayout()
 
 <div class="container float-center">
-<h1 style="color: var(--red)">Les sorties</h1> <br>
+    <h1 style="color: var(--red)"> <span>Les</span> <span>sorties </span> </h1> <br>
 </div>
 
 <div class="container">
     <div class="row justify-content-center row-cols-3 row-cols-lg-12">
         #foreach ($event in $listeEvenements)
-        <div class="col-12 col-lg-2 mr-1 border border-danger rounded shadow flex-box">
+        <div class="col-12 col-lg-2 mr-1 border border-danger rounded shadow flex-box text-center" id="block">
 
             #if($event.gettypeEvent == true)
 
-            <img class="img-fluid border border-dark rounded-circle mt-2 mb-2" src="img/running_1.svg"> <hr>
+            <img class="img-fluid border border-dark rounded-circle mt-2 mb-2" src="img/running_1.svg" id="img"> <hr>
 
            #else
 
@@ -45,10 +45,23 @@
 </div>
 
 
+<script>
+    const block = document.getElementById('img')
+
+    window.addEventListener('load',() =>{
+
+        const timeline = gsap.timeline({paused:true});
+
+        timeline
+            .staggerFrom(block, 1, {top: -50, opacity:0, ease: "power2.out"}, 0.3)
+
+
+        timeline.play();
+    })
+</script>
 
 
 
-<!--$listeEvenements[0].toString()-->
 
 
 
