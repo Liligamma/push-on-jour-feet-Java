@@ -45,7 +45,7 @@ public class LoginDao {
 
     }
 
-    public static User getUserByPseudo(String pseudo, String mdp){
+    public static User getUserByPseudo(String pseudo, String mdp) throws Exception{
         User user = new User();
 
         Database db =Database.get();
@@ -55,42 +55,56 @@ public class LoginDao {
 
 
         try {
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM utilisateurs WHERE pseudo =? OR mot_de_passe=?");
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM utilisateurs WHERE pseudo =? AND mot_de_passe=?");
             statement.setString(1, pseudo);
             statement.setString(2, mdp);
             ResultSet resultSet = statement.executeQuery();
-            resultSet.next();
+
+            if(! resultSet.next()){
+
+                throw new Exception("utilisateur inexistant");
+
+            }
 
 
 
-           String rightPseudo = resultSet.getString("pseudo");
-           String rightPsw = resultSet.getString("mot_de_passe");
-
-
-
-
-                if (pseudo.equals(rightPseudo)&&(mdp.equals(rightPsw))){
-                    myUser= mapUser(resultSet);
-
-                    System.out.println("L'utilisateur existe");
-
-                }
-
-                else {
-                    System.out.println("ca ne marche pas");
-                    Map<String, Object > modele = new HashMap<>();
                     myUser= mapUser(resultSet);
                     return myUser;
 
-                }
-;
 
 
-//
-//            }
 
 
-           System.out.println(resultSet.getString(2));
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return myUser ;
+    }
+
+
+
+    public static User getUserById(int id){
+        User user = new User();
+
+        Database db =Database.get();
+        Connection connection = db.getConnection();
+        User myUser = new User();
+
+
+
+        try {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM utilisateurs WHERE id=?");
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+
+           resultSet.next();
+
+            myUser= mapUser(resultSet);
+            return myUser;
+
+
+
 
 
         } catch (SQLException throwables) {

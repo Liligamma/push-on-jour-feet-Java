@@ -16,18 +16,19 @@ public class App {
         db.checkConnection();
 
         LoginControler loginControler = new LoginControler();
-        Spark.get("/login", (req, res ) ->loginControler.displayLogin(req, res));
-        Spark.get("/logout", (req, res ) ->loginControler.displayLogout(req, res));
+        Spark.get("/login", (req, res) -> loginControler.displayLogin(req, res));
+        Spark.post("/login", (req, res) -> loginControler.displayLogin(req, res));
+        Spark.get("/logout", (req, res) -> loginControler.displayLogout(req, res));
 
 //        Spark.post("/login/bienvenu", (req, res)->loginControler.createAccount(req, res));
-        EventControler eventControler= new EventControler();
-        Spark.get ("/evenements",(req, res)->eventControler.displayEvents(req, res));
-        Spark.get ("/evenements/details", (req, res)->eventControler.eventDetails(req,res));
-        Spark.get ("/evenements/nouveau", (req, res)->eventControler.displayEventForm(req,res));
+        EventControler eventControler = new EventControler();
+        Spark.get("/evenements", (req, res) -> eventControler.displayEvents(req, res));
+        Spark.get("/evenements/details", (req, res) -> eventControler.eventDetails(req, res));
+        Spark.get("/evenements/nouveau", (req, res) -> eventControler.displayEventForm(req, res));
 
-        HomeControler homeControler= new HomeControler();
-        Spark.get ("/home",(req, res)->homeControler.displayHome(req, res));
-        
+        HomeControler homeControler = new HomeControler();
+        Spark.get("/home", (req, res) -> homeControler.displayHome(req, res));
+
         Spark.get("/", (req, res) -> {
             System.out.println("coucou");
             return Template.render("home.html", new HashMap<>());
@@ -37,28 +38,23 @@ public class App {
             System.out.println("coucou");
             loginControler.createAccount(req, res);
             return Template.render("creationCompte.html", new HashMap<>());
-            });
-
-        Spark.post("/account", (req, res)-> {
-            System.out.println("coucou");
-            loginControler.displayAccount(req, res);
-            return Template.render("monCompte.html", new HashMap<>());
         });
 
-        Spark.post("/error", (req, res)-> {
-            System.out.println("coucou");
-            loginControler.displayAccount(req, res);
+        Spark.get("/account", (req, res) -> loginControler.displayAccount(req, res)  );
+
+
+
+        Spark.get("/error", (req, res) -> {
+
             return Template.render("loginIssue.html", new HashMap<>());
         });
 
 
-
         Spark.post("/nouveau", (req, res) -> {
             System.out.println("coucou");
-            eventControler.createEvent (req, res);
+            eventControler.createEvent(req, res);
             return Template.render("confirmationNewEvent.html", new HashMap<>());
         });
-
 
 
     }

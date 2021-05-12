@@ -7,6 +7,8 @@ import org.example.modeles.User;
 import org.example.utils.URLUtils;
 import spark.Request;
 import spark.Response;
+import spark.Session;
+import spark.Spark;
 
 import java.sql.SQLOutput;
 import java.util.HashMap;
@@ -19,12 +21,46 @@ public class LoginControler {
     LoginDao loginDao = new LoginDao();
 
     public String displayLogin(Request request, Response response){
-        String userName = "Magali";
-        int age =23;
-        Map<String, Object > modele = new HashMap<>();
-        modele.put("user", userName);
-        modele.put ("age", age);
-        return Template.render("login.html", modele);
+        if(request.requestMethod().equals("POST")){
+            Map<String, Object > modele = new HashMap<>();
+            Map<String, String> query = URLUtils.decodeQuery(request.body());
+
+
+            String userPseudo = query.get("pseudo");
+            String userMdp = query.get("password");
+
+            try {
+                User firstUsers= loginDao.getUserByPseudo(userPseudo, userMdp);
+                System.out.println("ca marche partie 2");
+                modele.put("authenticationSucceeded", true);
+
+                request.session(true).attribute("currentUserId",firstUsers.getId());
+                response.cookie("currentUserId", ""+ firstUsers.getId());
+
+
+                response.redirect("/account");
+
+
+
+                return null;
+
+            }
+            catch (Exception e){
+                modele.put("authenticationFailed", true);
+                System.out.println("ca ne marche pas partie 2");
+                response.redirect("/error");
+                return null;
+
+            }
+
+        }
+
+        else {
+
+            Map<String, Object > modele = new HashMap<>();
+            return Template.render("login.html", modele);
+
+        }
 
     }
 
@@ -39,38 +75,36 @@ public class LoginControler {
 
     public String displayAccount (Request request, Response response){
         Map<String, Object > modele = new HashMap<>();
-        Map<String, String> query = URLUtils.decodeQuery(request.body());
+
+//        mettre le tout dans une fonction static prendre en paramètre request et return userId
+            Session session = request.session(false);
+
+            if(session==null){
+//                redirection vers login
+                return null;
+            }
+
+            int userId=0;
+
+        Object userIdObj = session.attribute("currentUserId");
+        if (userIdObj instanceof Integer) {
+            userId = (Integer) userIdObj;
+        } else if (userIdObj instanceof String) {
+            userId = Integer.parseInt((String) userIdObj);
+        } else {
+            Spark.halt(401, "No valid session found");
+        }
 
 
-        String userPseudo = query.get("pseudo");
-        String userMdp = query.get("password");
-
-
-       User firstUsers= loginDao.getUserByPseudo(userPseudo, userMdp);
-
-
-
-        if (firstUsers.password.equals(userMdp)){
-           System.out.println("ca marche partie 2");
-           modele.put("authenticationSucceeded", true);
-
-             request.session(true).attribute("currentUserId",firstUsers.getId());
-
-
+            User firstUsers = loginDao.getUserById(userId);
             modele.put("account", firstUsers);
 
             return Template.render("monCompte.html", modele);
 
-       }
-
-        else {
-            modele.put("authenticationFailed", true);
-            System.out.println("ca ne marche pas partie 2");
-            return Template.render("loginIssue.html", modele);
-        }
-
 
     }
+
+
 
     public String createAccount (Request request, Response response){
         Map<String, Object > modele = new HashMap<>();
