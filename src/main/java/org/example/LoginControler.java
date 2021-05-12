@@ -19,11 +19,7 @@ public class LoginControler {
     LoginDao loginDao = new LoginDao();
 
     public String displayLogin(Request request, Response response){
-        String userName = "Magali";
-        int age =23;
         Map<String, Object > modele = new HashMap<>();
-        modele.put("user", userName);
-        modele.put ("age", age);
         return Template.render("login.html", modele);
 
     }
@@ -53,6 +49,7 @@ public class LoginControler {
         if (firstUsers.password.equals(userMdp)){
            System.out.println("ca marche partie 2");
            modele.put("authenticationSucceeded", true);
+           boolean authenticated = true;
 
              request.session(true).attribute("currentUserId",firstUsers.getId());
 
@@ -96,7 +93,6 @@ public class LoginControler {
         System.out.println(firstPrenom);
         System.out.println(user);
         System.out.println(user.telephone);
-
 
 
      User theUser = loginDao.setNewUser(user);

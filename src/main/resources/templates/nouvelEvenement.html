@@ -12,25 +12,24 @@
         <div class="col-12"></div>
     </div>
 
-    <div class="row">
-        <div class="col-12 col-lg-6">
+    <div class="row justify-content-center">
+        <div class="col-12 col-lg-6 justify-content-center">
             <form id="formulaire d'inscription" name="Formulaire" method="POST" action="#">
                 <div class="form-group">
-                    <label for="date"> Date <input type="text" name="date"  required="required" class="form-control" id="date" > </label>
+                    <label for="date"> Date <input type="date" name="date"  required="required" class="form-control" id="date" > </label>
                     <label for="adresse"> Adresse du rendez vous  <input type="text" name="adresse"  required="required" class="form-control" id="adresse"/></label>
                     <label for="nom"> Nom de la sortie <input type="text" name="nom"  required="required" class="form-control" id="nom"/></label>
-                    <label for="email"> Adresse E-mail  <input type="email" name="email" required="required" class="form-control" id="email"/> </label>
-                    <label for="telephone"> Téléphone <input type="text" name="telephone" class="form-control" id="telephone"/></label>
-                    <label for="password"> Mot de passe<input type="password" name="password"  required="required" minlength="8" required class="form-control" id="password "/>
-                        <div class="password-icon">
-                            <i data-feather="eye"></i>
-                            <i data-feather="eye-off"></i>
-                        </div>
-                    </label>
+                    <label for="commentaires"> Informations sur la sortie  <input type="email" name="email" required="required" class="form-control" id="commentaires"/> </label>
+                    <label for="typeSortie"> Choisir le type de sortie</label>
+                        <select name="typeSortie" id="typeSortie">
+                            <option value="Running"> Running</option>
+                            <option value="Velo"> Velo </option>
+                        </select>
+
 
                     <br>
 
-                    <button  class="btn btn-danger" type="submit" > S'inscrire </button>
+                    <button  class="btn btn-danger" type="submit" > Enregistrer </button>
                     <!--                 onClick="location.href ='login/bienvenu?pseudo='+ document.getElementById('pseudo').value + 'prenom'= document.getElementById('prenom').value + 'nom' = document.getElementById('nom').value  + 'password'= document.getElementById('password').value + 'telephone' = document.getElementById('telephone').value + 'email' = document.getElementById('email').value"-->
 
                 </div>

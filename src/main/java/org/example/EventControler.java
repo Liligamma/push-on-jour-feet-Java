@@ -15,6 +15,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static spark.route.HttpMethod.before;
+
 public class EventControler {
  EvenementDao evenementDao = new EvenementDao();
 // on crée l'array list ici pour pouvoir y avoir accès dans toutes les méthodes de la classe EventControler. Cette ArrayList comporte tous les évènement créés
@@ -40,7 +42,9 @@ public class EventControler {
   String eventIdString = request.queryParamOrDefault("detail_id", "0");
   int eventid = Integer.parseInt(eventIdString);
   Evenement firstEvent= evenementDao.getEvenementById(eventid);
+//  on récupère l'organisateur de l'événement
   User orgaEvent = evenementDao.getOrganisateur(eventid);
+//  on récupère la liste des participants
   List<User> listeParticipants = evenementDao.getParticipants(eventid);
 
   System.out.println(orgaEvent.getPseudo());
@@ -57,11 +61,19 @@ public class EventControler {
 
  }
 
+// fonction afficher le formulaire de création d'un événenemt
  public String displayEventForm (Request request, Response response) {
+  before((request, response) -> {
+   boolean authenticated;
+
+   if(!authenticated = false){
+   }
+  });
   Map<String, Object> modele = new HashMap<>();
 
   return Template.render("nouvelEvenement.html", modele);
  }
+
 
  public String createEvent (Request request, Response response){
   Map<String, Object > modele = new HashMap<>();

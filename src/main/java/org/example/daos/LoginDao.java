@@ -18,7 +18,7 @@ import java.util.Map;
 
 
 public class LoginDao {
-
+// enregistrer un nouvel utilisateur
     public User setNewUser (User user){
 
         Database db =Database.get();
@@ -44,7 +44,7 @@ public class LoginDao {
 
 
     }
-
+//    fonction pour trouver un utilisateur qui se connecte à son compte
     public static User getUserByPseudo(String pseudo, String mdp){
         User user = new User();
 
