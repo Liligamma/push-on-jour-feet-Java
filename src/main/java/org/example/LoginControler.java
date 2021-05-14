@@ -74,26 +74,30 @@ public class LoginControler {
     }
 
     public String displayAccount (Request request, Response response){
+
         Map<String, Object > modele = new HashMap<>();
 
+        int userId = UserAuthenticate(request);
+//        Map<String, Object > modele = new HashMap<>();
+
 //        mettre le tout dans une fonction static prendre en paramètre request et return userId
-            Session session = request.session(false);
-
-            if(session==null){
-
-                return Template.render("login.html", modele);
-            }
-
-            int userId=0;
-
-        Object userIdObj = session.attribute("currentUserId");
-        if (userIdObj instanceof Integer) {
-            userId = (Integer) userIdObj;
-        } else if (userIdObj instanceof String) {
-            userId = Integer.parseInt((String) userIdObj);
-        } else {
-            Spark.halt(401, "No valid session found");
-        }
+//            Session session = request.session(false);
+//
+//            if(session==null){
+//
+//                return Template.render("login.html", modele);
+//            }
+//
+//            int userId=0;
+//
+//        Object userIdObj = session.attribute("currentUserId");
+//        if (userIdObj instanceof Integer) {
+//            userId = (Integer) userIdObj;
+//        } else if (userIdObj instanceof String) {
+//            userId = Integer.parseInt((String) userIdObj);
+//        } else {
+//            Spark.halt(401, "No valid session found");
+//        }
 
 
 
@@ -142,5 +146,30 @@ public class LoginControler {
         return Template.render("creationCompte.html", modele);
     }
 
+
+    public static int UserAuthenticate (Request request){
+        Response response=null;
+
+        Session session = request.session(false);
+        int userId=0;
+
+        if(session==null){
+
+//            return Template.render("login.html", modele);
+            response.redirect("/login");
+
+        }
+
+        Object userIdObj = session.attribute("currentUserId");
+        if (userIdObj instanceof Integer) {
+            userId = (Integer) userIdObj;
+        } else if (userIdObj instanceof String) {
+            userId = Integer.parseInt((String) userIdObj);
+        } else {
+            Spark.halt(401, "No valid session found");
+        }
+
+        return userId;
+    }
 
 }
