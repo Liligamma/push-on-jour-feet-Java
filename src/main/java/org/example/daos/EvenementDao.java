@@ -10,6 +10,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Date;
+
 
 public class EvenementDao {
 
@@ -101,8 +103,15 @@ public class EvenementDao {
         Connection connection = db.getConnection();
 
         try {
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO evenements (date, nom, commentaires ) VALUES (?,?,?)");
-//            statement.setString(2, event.);
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO evenements (date, latitude, longitude, nom, organisateur_id, commentaires, type_sortie ) VALUES (?,?,?,?,?,?,?)");
+            statement.setDate(1, (java.sql.Date) event.dateEvenement);
+            statement.setDouble(2, event.latitude);
+            statement.setDouble(3, event.longitude);
+            statement.setString(4, event.nomEvenement);
+            statement.setInt(5, event.organisateurId);
+            statement.setString(6, event.commentairesEvenement);
+            statement.setBoolean(7, event.typeEvent);
+
             int resultset = statement.executeUpdate();
 
 
@@ -116,7 +125,7 @@ public class EvenementDao {
     private Evenement mapEvenement(ResultSet resultSet) throws SQLException {
         Evenement e = new Evenement();
         e.setId(resultSet.getInt(1));
-        e.setDateEvenement(resultSet.getString(2));
+        e.setDateEvenement(resultSet.getDate(2));
         e.setNomEvenement(resultSet.getString(5));
         e.setOrganisateurId(resultSet.getInt(6));
         e.setCommentairesEvenement(resultSet.getString(7));

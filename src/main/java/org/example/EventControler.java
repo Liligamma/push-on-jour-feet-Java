@@ -6,14 +6,18 @@ import org.example.core.Template;
 import org.example.daos.EvenementDao;
 import org.example.modeles.Evenement;
 import org.example.modeles.User;
+import org.example.utils.URLUtils;
 import spark.Request;
 import spark.Response;
 
 import java.sql.SQLOutput;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Date;
 
 import static spark.route.HttpMethod.before;
 
@@ -66,12 +70,38 @@ public class EventControler {
 
   Map<String, Object> modele = new HashMap<>();
 
+  int userId = UserAuthenticate(request);
+
   return Template.render("nouvelEvenement.html", modele);
  }
 
 
- public String createEvent (Request request, Response response){
+ public String createEvent (Request request, Response response) throws ParseException {
   Map<String, Object > modele = new HashMap<>();
+  Map<String, String> query = URLUtils.decodeQuery(request.body());
+
+  Evenement event = new Evenement();
+  String nom = query.get("nom");
+  String date = query.get("date");
+  String typeSortie = query.get("typeSortie");
+  String latitude = query.get("latitude");
+  String longitude = query.get("longitude");
+  String commentaires = query.get("commentaires");
+
+  Date realDate = new SimpleDateFormat("dd/MM/yyyy").parse(date);
+  Double realLatitude = Double.parseDouble(latitude);
+  Double realLongitude = Double.parseDouble(longitude);
+  Boolean realType = Boolean.parseBoolean(typeSortie);
+
+
+  event.setNomEvenement(nom);
+  event.setTypeEvent(realType);
+  event.setDateEvenement(realDate);
+  event.setLatitude(realLatitude);
+  event.setLongitude(realLongitude);
+  event.setCommentairesEvenement(commentaires);
+
+  Evenement myEvent = evenementDao.setNewEvent(event);
 
   return Template.render("confirmationNewEvent.html", modele);
  }

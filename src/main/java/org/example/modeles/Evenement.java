@@ -2,20 +2,24 @@ package org.example.modeles;
 
 //J'initialise la classe Evenements//
 
-import java.time.LocalDateTime;
+import java.util.Date;
 
 public class Evenement {
-    int id;
-    String dateEvenement;
-    double latitude;
-    double longitude;
-    String nomEvenement;
-    int organisateurId;
-    boolean typeEvent;
-    String commentairesEvenement;
-    int participants;
+    public int id;
+    public Date dateEvenement;
+    public double latitude;
+    public double longitude;
+    public String nomEvenement;
+    public int organisateurId;
+    public boolean typeEvent;
+    public String commentairesEvenement;
+    public int participants;
 
-    public Evenement(int id, String dateEvenement, double latitude, double longitude, String nomEvenement, int organisateurId, boolean typeEvent ,String commentairesEvenement) {
+    public Evenement(){
+
+    }
+
+    public Evenement(int id, Date dateEvenement, double latitude, double longitude, String nomEvenement, int organisateurId, boolean typeEvent ,String commentairesEvenement) {
         this.id = id;
         this.dateEvenement = dateEvenement;
         this.latitude = latitude;
@@ -28,9 +32,7 @@ public class Evenement {
 
     }
 
-    public Evenement(){
 
-    }
 
     public int getId() {
         return id;
@@ -40,11 +42,11 @@ public class Evenement {
         this.id = id;
     }
 
-    public String getDateEvenement() {
+    public Date getDateEvenement() {
         return dateEvenement;
     }
 
-    public void setDateEvenement(String dateEvenement) {
+    public void setDateEvenement(Date dateEvenement) {
         this.dateEvenement = dateEvenement;
     }
 
@@ -108,4 +110,5 @@ public class Evenement {
  public String toString(){
         return "Quand ?\r\n" + dateEvenement + "Quoi ?\r\n" + nomEvenement +"Commentaires : \r\n" + commentairesEvenement;
     }
+
 }

@@ -14,17 +14,20 @@
 
     <div class="row justify-content-center">
         <div class="col-12 col-lg-6 justify-content-center">
-            <form id="formulaire d'inscription" name="Formulaire" method="POST" action="#">
+            <form id="formulaire d'inscription" name="Formulaire" method="POST" action="/nouveau">
                 <div class="form-group">
-                    <label for="date"> Date <input type="date" name="date"  required="required" class="form-control" id="date" > </label>
-                    <label for="adresse"> Adresse du rendez vous  <input type="text" name="adresse"  required="required" class="form-control" id="adresse"/></label>
                     <label for="nom"> Nom de la sortie <input type="text" name="nom"  required="required" class="form-control" id="nom"/></label>
-                    <label for="commentaires"> Informations sur la sortie  <input type="email" name="email" required="required" class="form-control" id="commentaires"/> </label>
+                    <label for="date"> Date <input type="date" name="date"  required="required" class="form-control" id="date" > </label>
                     <label for="typeSortie"> Choisir le type de sortie</label>
-                        <select name="typeSortie" id="typeSortie">
-                            <option value="Running"> Running</option>
-                            <option value="Velo"> Velo </option>
-                        </select>
+                    <select name="typeSortie" id="typeSortie">
+                        <option value="Running"> Running</option>
+                        <option value="Velo"> Velo </option>
+                    </select> <br>
+                    <label for="adresse"> Adresse du rendez vous  <input type="text" name="adresse"  class="form-control" id="adresse"/></label> <br>
+                    <label for="latitude"> Latitude <input type="number" name="latitude" min="0" step="0.01" required="required" class="form-control" id="latitude"/> </label>
+                    <label for="longitude"> Longitude<input type="number" name="longitude" min="0" step="0.01" required="required" class="form-control" id="longitude"/> </label>
+                    <label for="commentaires"> Informations sur la sortie</label> <textarea name="commentaires" placeholder="Point de rendez vous précis, nombre de km, consignes, niveau...." required="required" class="form-control" id="commentaires"></textarea>
+
 
 
                     <br>
