@@ -80,8 +80,8 @@ public class LoginControler {
             Session session = request.session(false);
 
             if(session==null){
-//                redirection vers login
-                return null;
+
+                return Template.render("login.html", modele);
             }
 
             int userId=0;
@@ -94,6 +94,8 @@ public class LoginControler {
         } else {
             Spark.halt(401, "No valid session found");
         }
+
+
 
 
             User firstUsers = loginDao.getUserById(userId);

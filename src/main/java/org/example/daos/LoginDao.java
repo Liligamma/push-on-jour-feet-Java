@@ -122,6 +122,8 @@ public class LoginDao {
         u.setPassword(resultSet.getString(3));
         u.setNom(resultSet.getString(4));
         u.setPrenom(resultSet.getString(5));
+        u.setTelephone(resultSet.getString(7));
+        u.setEmail(resultSet.getString(6));
         return u;
     }
 

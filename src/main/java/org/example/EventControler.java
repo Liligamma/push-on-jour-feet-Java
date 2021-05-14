@@ -63,12 +63,7 @@ public class EventControler {
 
 // fonction afficher le formulaire de création d'un événenemt
  public String displayEventForm (Request request, Response response) {
-  before((request, response) -> {
-   boolean authenticated;
 
-   if(!authenticated = false){
-   }
-  });
   Map<String, Object> modele = new HashMap<>();
 
   return Template.render("nouvelEvenement.html", modele);
