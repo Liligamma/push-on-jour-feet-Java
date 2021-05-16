@@ -24,6 +24,7 @@ public class App {
         Spark.get("/evenements", (req, res) -> eventControler.displayEvents(req, res));
         Spark.get("/evenements/details", (req, res) -> eventControler.eventDetails(req, res));
         Spark.get("/evenements/nouveau", (req, res) -> eventControler.displayEventForm(req, res));
+        Spark.post("/nouveau", (req, res) -> eventControler.createEvent(req, res));
 
 
         HomeControler homeControler = new HomeControler();
@@ -48,7 +49,7 @@ public class App {
         });
 
 
-        Spark.post("/nouveau", (req, res) -> eventControler.createEvent(req, res));
+
 
 
 

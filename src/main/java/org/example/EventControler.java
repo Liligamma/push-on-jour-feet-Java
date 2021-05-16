@@ -9,14 +9,14 @@ import org.example.modeles.User;
 import org.example.utils.URLUtils;
 import spark.Request;
 import spark.Response;
+import spark.Session;
+import spark.Spark;
 
 import java.sql.SQLOutput;
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.Date;
 
 import static spark.route.HttpMethod.before;
@@ -70,7 +70,7 @@ public class EventControler {
 
   Map<String, Object> modele = new HashMap<>();
 
-  int userId = UserAuthenticate(request);
+ int userId = UserAuthenticate(request);
 
   return Template.render("nouvelEvenement.html", modele);
  }
@@ -80,6 +80,8 @@ public class EventControler {
   Map<String, Object > modele = new HashMap<>();
   Map<String, String> query = URLUtils.decodeQuery(request.body());
 
+
+
   Evenement event = new Evenement();
   String nom = query.get("nom");
   String date = query.get("date");
@@ -88,22 +90,71 @@ public class EventControler {
   String longitude = query.get("longitude");
   String commentaires = query.get("commentaires");
 
-  Date realDate = new SimpleDateFormat("dd/MM/yyyy").parse(date);
+
+
+
+  SimpleDateFormat realDate = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
+
+  Date myDate= realDate.parse(date);
+
+  System.out.println(myDate);
+
+
   Double realLatitude = Double.parseDouble(latitude);
   Double realLongitude = Double.parseDouble(longitude);
   Boolean realType = Boolean.parseBoolean(typeSortie);
 
+  System.out.println(myDate);
+
+//  int userId = UserAuthenticate(request);
+  int userId=0;
+  Session session = request.session(false);
+  Object userIdObj = session.attribute("currentUserId");
+  userId = (Integer) userIdObj;
+
+  java.sql.Date date_sql = new java.sql.Date(myDate.getTime());
 
   event.setNomEvenement(nom);
   event.setTypeEvent(realType);
-  event.setDateEvenement(realDate);
+  event.setDateEvenement(date_sql);
   event.setLatitude(realLatitude);
   event.setLongitude(realLongitude);
   event.setCommentairesEvenement(commentaires);
+  event.setOrganisateurId(userId);
+
+
 
   Evenement myEvent = evenementDao.setNewEvent(event);
 
+  modele.put("newEvent", myEvent);
+
   return Template.render("confirmationNewEvent.html", modele);
+ }
+
+
+ public static int UserAuthenticate (Request request){
+  Response response=null;
+
+  Session session = request.session(false);
+  int userId=0;
+
+  if(session==null){
+
+//            return Template.render("login.html", modele);
+   response.redirect("/login");
+
+  }
+
+  Object userIdObj = session.attribute("currentUserId");
+  if (userIdObj instanceof Integer) {
+   userId = (Integer) userIdObj;
+  } else if (userIdObj instanceof String) {
+   userId = Integer.parseInt((String) userIdObj);
+  } else {
+   Spark.halt(401, "No valid session found");
+  }
+
+  return userId;
  }
 
 }
