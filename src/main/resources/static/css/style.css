@@ -95,3 +95,9 @@ label .password-icon {
 
 
 }
+
+
+#search input {
+outline:2;
+border:2;
+}

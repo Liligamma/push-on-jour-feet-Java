@@ -5,7 +5,23 @@
     <h1 style="color: var(--red)"> <span>Les</span> <span>sorties </span> </h1> <br>
 </div>
 
+
+
+
 <div class="container">
+
+    <div class="row text-center">
+
+        <div class="col-12">
+
+    <form id="search" method="post">
+        <input class="search_data" name="saisie" type="text" placeholder="recherche" required />
+
+    </form>
+        </div>
+    </div>
+    <hr>
+
     <div class="row justify-content-center row-cols-3 row-cols-lg-12">
         #foreach ($event in $listeEvenements)
         <div class="col-12 col-lg-2 mr-1 border border-danger rounded shadow flex-box text-center" id="block">
