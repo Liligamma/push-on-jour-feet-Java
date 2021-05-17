@@ -91,8 +91,6 @@ public class EventControler {
   String commentaires = query.get("commentaires");
 
 
-
-
   SimpleDateFormat realDate = new SimpleDateFormat("yyyy-MM-dd", Locale.ENGLISH);
 
   Date myDate= realDate.parse(date);
@@ -130,6 +128,30 @@ public class EventControler {
 
   return Template.render("confirmationNewEvent.html", modele);
  }
+
+ public String participation (Request request, Response response) {
+  Map<String, Object > modele = new HashMap<>();
+
+  String eventIdString = request.queryParamOrDefault("detail_id", "0");
+  int eventid = Integer.parseInt(eventIdString);
+
+  int userId=0;
+  Session session = request.session(false);
+  Object userIdObj = session.attribute("currentUserId");
+  userId = (Integer) userIdObj;
+
+  System.out.println(eventid);
+  System.out.println(userId);
+
+  int myUserId = evenementDao.setParticipants(eventid, userId);
+
+  modele.put("participantId", myUserId);
+
+  return Template.render("participation.html", modele);
+ }
+
+
+
 
 
  public static int UserAuthenticate (Request request){

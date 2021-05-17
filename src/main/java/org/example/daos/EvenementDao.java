@@ -122,6 +122,25 @@ public class EvenementDao {
         return event;
     }
 
+    public int setParticipants (int eventId, int userId){
+        Database db =Database.get();
+        Connection connection = db.getConnection();
+
+        try{
+            PreparedStatement statement = connection.prepareStatement("INSERT INTO evenements_utilisateurs (evenements_id, utilisateurs_id) VALUES (?,?)");
+            statement.setInt(1, eventId);
+            statement.setInt(2, userId);
+
+            int resultset = statement.executeUpdate();
+
+        }catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+
+           return userId;
+    }
+
     private Evenement mapEvenement(ResultSet resultSet) throws SQLException {
         Evenement e = new Evenement();
         e.setId(resultSet.getInt(1));
