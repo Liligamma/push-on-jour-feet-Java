@@ -94,10 +94,16 @@ label .password-icon {
     margin-right: auto;
 
 
+
 }
 
 
 #search input {
 outline:2;
 border:2;
+}
+#myMap {
+    position: center;
+    width: 600px;
+    height: 400px;
 }

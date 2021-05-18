@@ -11,7 +11,9 @@
 
                 <div class="col-12 text-center font-weight-bold">$detailEvenement.getDateEvenement()</div> <br>
                 <div class="col-12 text-center">$detailEvenement.getNomEvenement()</div> <br>
-                <img class="img-fluid rounded-circle" id="img-carte" src="img/carte_test.png"> <br>
+                <div class="row text-center justify content-center">
+                <div class="col-12" id="myMap" style='position:relative;width:600px;height:400px;'></div> <br>
+                </div>
                 <div class="col-12 text-center">$detailEvenement.getCommentairesEvenement()</div> <br>
 <!--                <div class="col-12 text-center">$detailEvenement.gettypeEvent()</div> <br>-->
 
@@ -33,4 +35,6 @@
         </div>
     </div>
 
+    <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=AodddEr2Z6uTzo8eX5a7xaLk4OHojboX8Bj_wnZ5vxxk1D7H17BO89v-SEGR9HMe' async defer></script>
+    <script src="/script/detailEvent.js"></script>
 #end
