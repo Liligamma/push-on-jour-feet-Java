@@ -146,6 +146,8 @@ public class EvenementDao {
         e.setId(resultSet.getInt(1));
         e.setDateEvenement(resultSet.getDate(2));
         e.setNomEvenement(resultSet.getString(5));
+        e.setLatitude(resultSet.getDouble(3));
+        e.setLongitude(resultSet.getDouble(4));
         e.setOrganisateurId(resultSet.getInt(6));
         e.setCommentairesEvenement(resultSet.getString(7));
         e.setTypeEvent(resultSet.getBoolean(8));

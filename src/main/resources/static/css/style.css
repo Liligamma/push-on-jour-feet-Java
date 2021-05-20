@@ -107,3 +107,11 @@ border:2;
     width: 600px;
     height: 400px;
 }
+
+.latitude{
+display: none;
+}
+
+.longitude{
+display : none;
+}
