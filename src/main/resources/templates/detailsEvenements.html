@@ -37,6 +37,37 @@
         </div>
     </div>
 
-    <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=AodddEr2Z6uTzo8eX5a7xaLk4OHojboX8Bj_wnZ5vxxk1D7H17BO89v-SEGR9HMe' async defer></script>
-    <script src="/script/detailEvent.js"></script>
+<!--    <script src="./script/detailEvent.js/gsap.min.js"></script>-->
+<script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=AodddEr2Z6uTzo8eX5a7xaLk4OHojboX8Bj_wnZ5vxxk1D7H17BO89v-SEGR9HMe' async defer></script>
+<!--    <script src="./script/detailEvent.js"></script>-->
+
+
+
 #end
+    <script>
+
+    var bMapAPIKey = "AodddEr2Z6uTzo8eX5a7xaLk4OHojboX8Bj_wnZ5vxxk1D7H17BO89v-SEGR9HMe";
+
+    var latitude = document.getElementById('latitude');
+    var longitude = document.getElementById('longitude');
+
+    var displayLat = latitude.textContent;
+    var displayLong = longitude.textContent;
+
+    console.log(displayLat);
+    console.log(displayLong);
+
+ function GetMap()
+   {
+   "use strict";
+
+    var map = new Microsoft.Maps.Map('#myMap', {
+    center: new Microsoft.Maps.Location(displayLat, displayLong),
+    mapTypeId: Microsoft.Maps.MapTypeId.aerial,
+    zoom: 10
+   });
+
+   }
+    </script>
+
+
