@@ -99,9 +99,6 @@ public class LoginControler {
 //            Spark.halt(401, "No valid session found");
 //        }
 
-
-
-
             User firstUsers = loginDao.getUserById(userId);
             modele.put("account", firstUsers);
 

@@ -1,6 +1,7 @@
 #parse("base.html")
 #@mainLayout()
 
+
 <div class="container float-center">
     <h1 style="color: var(--red)"> <span>Les</span> <span>sorties </span> </h1> <br>
 </div>
@@ -15,14 +16,14 @@
         <div class="col-12">
 
     <form id="search" method="post">
-        <input class="search_data" name="saisie" type="text" placeholder="recherche" required />
+        <input class="search_data" id ="myInput" name="saisie" type="text" placeholder="recherche" required />
 
     </form>
         </div>
     </div>
     <hr>
 
-    <div class="row justify-content-center row-cols-3 row-cols-lg-12">
+    <div class="row justify-content-center row-cols-3 row-cols-lg-12" id="myEvents" >
         #foreach ($event in $listeEvenements)
         <div class="col-12 col-lg-2 mr-1 border border-danger rounded shadow flex-box text-center" id="block">
 
@@ -36,7 +37,7 @@
             #end
 
                 <div class="row justify-content-center font-weight-bold">$event.getDateEvenement()  </div> <br>
-                <div class="row justify-content-center text-center">$event.getNomEvenement() </div>  <br>
+                <div class="row justify-content-center text-center" >$event.getNomEvenement() </div>  <br>
                 <div class="row justify-content-center text-center">$event.getCommentairesEvenement() </div> <br>
 
 
@@ -59,6 +60,47 @@
             </div>
         </div>
 </div>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+
+<!--$(document).ready(function(){-->
+<!-- $("#myInput").on("keyup", function() {-->
+<!--   var value = $(this).val().toLowerCase();-->
+<!--   $("#block").filter(function() {-->
+<!--    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)-->
+<!--    });-->
+<!--  });-->
+<!--});-->
+
+   $("#myInput").keyup(function() {
+
+      // Retrieve the input field text and reset the count to zero
+      var filter = $(this).val(),
+        count = 0;
+
+      // Loop through the comment list
+      $('#block').each(function() {
+
+
+        // If the list item does not contain the text phrase fade it out
+        if ($(this).text().search(new RegExp(filter, "i")) < 0) {
+          $(this).hide();  // MY CHANGE
+
+          // Show the list item if the phrase matches and increase the count by 1
+        } else {
+          $(this).show(); // MY CHANGE
+          count++;
+        }
+
+      });
+
+    });
+
+</script>
+
 
 
 
