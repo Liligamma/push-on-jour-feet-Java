@@ -77,7 +77,7 @@ public class LoginControler {
 
         Map<String, Object > modele = new HashMap<>();
 
-        int userId = UserAuthenticate(request);
+        int userId = UserAuthenticate(request, response);
 //        Map<String, Object > modele = new HashMap<>();
 
 //        mettre le tout dans une fonction static prendre en paramètre request et return userId
@@ -144,29 +144,29 @@ public class LoginControler {
     }
 
 
-    public static int UserAuthenticate (Request request){
-        Response response=null;
-
+    public static int UserAuthenticate (Request request, Response response){
+//        Response response=null;
         Session session = request.session(false);
         int userId=0;
-
+        System.out.println(session);
         if(session==null){
 
 //            return Template.render("login.html", modele);
             response.redirect("/login");
 
         }
-
-        Object userIdObj = session.attribute("currentUserId");
-        if (userIdObj instanceof Integer) {
-            userId = (Integer) userIdObj;
-        } else if (userIdObj instanceof String) {
-            userId = Integer.parseInt((String) userIdObj);
-        } else {
-            Spark.halt(401, "No valid session found");
+        else {
+            Object userIdObj = session.attribute("currentUserId");
+            if (userIdObj instanceof Integer) {
+                userId = (Integer) userIdObj;
+            } else if (userIdObj instanceof String) {
+                userId = Integer.parseInt((String) userIdObj);
+            } else {
+                Spark.halt(401, "No valid session found");
+            }
         }
+            return userId;
 
-        return userId;
     }
 
 }

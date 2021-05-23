@@ -70,9 +70,12 @@ public class EventControler {
 
   Map<String, Object> modele = new HashMap<>();
 
- int userId = UserAuthenticate(request);
+ int userId = UserAuthenticate(request,response);
+  System.out.println(userId);
 
   return Template.render("nouvelEvenement.html", modele);
+
+
  }
 
 
@@ -154,28 +157,28 @@ public class EventControler {
 
 
 
- public static int UserAuthenticate (Request request){
-  Response response=null;
+ public static int UserAuthenticate (Request request, Response response){
+//  Response response=null;
 
   Session session = request.session(false);
   int userId=0;
 
   if(session==null){
-
+   System.out.println("la session est nulle");
 //            return Template.render("login.html", modele);
    response.redirect("/login");
 
   }
-
-  Object userIdObj = session.attribute("currentUserId");
-  if (userIdObj instanceof Integer) {
-   userId = (Integer) userIdObj;
-  } else if (userIdObj instanceof String) {
-   userId = Integer.parseInt((String) userIdObj);
-  } else {
-   Spark.halt(401, "No valid session found");
+else {
+   Object userIdObj = session.attribute("currentUserId");
+   if (userIdObj instanceof Integer) {
+    userId = (Integer) userIdObj;
+   } else if (userIdObj instanceof String) {
+    userId = Integer.parseInt((String) userIdObj);
+   } else {
+    Spark.halt(401, "No valid session found");
+   }
   }
-
   return userId;
  }
 
