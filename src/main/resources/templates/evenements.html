@@ -16,9 +16,23 @@
         <div class="col-12">
 
     <form id="searchEvents" method="post">
-        <input class="search_data" id ="myInput" name="saisie" type="text" placeholder="searchEvent" required />
+        <input class="search_data" id ="myInput" name="saisie" type="text" placeholder="searchEvent" required /> <br> <br>
 
     </form>
+        </div>
+
+        <div class="col-12">
+            <p class="filter">
+            <label>
+                <input type="radio" name="filter" value="*" checked="checked"/> show all
+            </label>
+                <label>
+                    <input type="radio" name="filter" value="Running"/> Running
+                </label>
+                <label>
+                    <input type="radio" name="filter" value="Velo"/> Velo
+                </label>
+            </p>
         </div>
     </div>
     <hr>
@@ -27,20 +41,29 @@
         #foreach ($event in $listeEvenements)
         <div class="col-12 col-lg-2 mr-1 border border-danger rounded shadow flex-box text-center" id="eventList">
 
-<!--            #if($event.gettypeEvent == true)-->
+         #if($event.gettypeEvent() == true)
 
             <img class="img-fluid border border-dark rounded-circle mt-2 mb-2" src="img/running_1.svg" id="img"> <hr>
 
-<!--           #else-->
+        #elseif($event.gettypeEvent() == false)
 
            <img class="img-fluid border border-dark rounded-circle mt-2 mb-2" src="img/bike.svg"> <hr>
           #end
             <div class="detailsEvent" id="detailEvent">
-                <div id="date">$event.getDateEvenement()</div> <br> <br>
+                <div class="event" id="event">$event.getDateEvenement()</div> <br> <br>
                 $event.getNomEvenement() <br> <br>
                 $event.getCommentairesEvenement()  <br> <br>
              </div>
 
+            <div class ="typeEvenement">
+             #if ($event.gettypeEvent() == true)
+            <div class="type"> Running </div>
+
+            #elseif ($event.gettypeEvent() == false)
+            <div class="type"> Velo </div>
+
+            #end
+            </div>
 <!--            <div class="row text-center" id="myList">-->
 <!--                <ul>-->
 <!--                    <li> <span>$event.getDateEvenement() </span> </li>-->
