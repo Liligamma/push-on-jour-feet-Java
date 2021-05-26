@@ -153,7 +153,15 @@ public class EventControler {
   return Template.render("participation.html", modele);
  }
 
+ public String filterEvent (Request request, Response response) {
+  Map<String, Object > modele = new HashMap<>();
+  String text = request.queryParamOrDefault("text", "");
 
+
+  modele.put("text", text );
+
+  return Template.render("evenementListePartial.html", modele);
+ }
 
 
 

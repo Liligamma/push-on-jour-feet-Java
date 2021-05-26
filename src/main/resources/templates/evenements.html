@@ -39,7 +39,7 @@
 
     <div class="row justify-content-center row-cols-3 row-cols-lg-12" id="myEvents" >
         #foreach ($event in $listeEvenements)
-        <div class="col-12 col-lg-2 mr-1 border border-danger rounded shadow flex-box text-center" id="eventList">
+        <div class="col-12 col-lg-2 mr-1 border border-danger rounded shadow flex-box text-center event-card" id="eventList">
 
          #if($event.gettypeEvent() == true)
 
@@ -55,12 +55,12 @@
                 $event.getCommentairesEvenement()  <br> <br>
              </div>
 
-            <div class ="typeEvenement">
+            <div class ="typeEvenement" id="typeEvenement">
              #if ($event.gettypeEvent() == true)
-            <div class="type"> Running </div>
+            <div class="type" id="running"> Running </div>
 
             #elseif ($event.gettypeEvent() == false)
-            <div class="type"> Velo </div>
+            <div class="type" id="velo"> Velo </div>
 
             #end
             </div>
@@ -116,21 +116,11 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="/jquery/jquery-3.5.1.min.js"></script>
+<script src="/script/listeEvent.js"></script>
 
 <script>
 
 var lesDates = document.getElementById('date');
-
-console.log(lesDates.textContent);
-
-$(document).ready(function(){
-$('#myInput').on("keyup", function() {
- var value = $(this).val().toLowerCase();
- $('#myEvents').filter(function() {
-$(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
- });
- });
-});
 
 
 
@@ -163,6 +153,17 @@ $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
 
 
 
+
+var checked = document.querySelector ('input:checked').value
+
+var type = document.getElementById('typeEvenement').textContent
+
+var running = document.getElementById('running').textContent
+
+if(checked == "Running"){
+
+document.getElementById('velo').style.visibility
+}
 
 </script>
 
