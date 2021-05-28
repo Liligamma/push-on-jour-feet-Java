@@ -1,1 +1,27 @@
-<div> $text </div>
+<div class="row justify-content-center row-cols-3 row-cols-lg-12" id="myEvents" >
+    #foreach ($event in $listeEvenements)
+    <div class="col-12 col-lg-2 mr-1 border border-danger rounded shadow flex-box text-center event-card" id="eventList">
+
+        #if($event.gettypeEvent() == true)
+
+        <img class="img-fluid border border-dark rounded-circle mt-2 mb-2" src="img/running_1.svg" id="img"> <hr>
+
+        #elseif($event.gettypeEvent() == false)
+
+        <img class="img-fluid border border-dark rounded-circle mt-2 mb-2" src="img/bike.svg"> <hr>
+        #end
+        <div class="detailsEvent" id="detailEvent">
+            <div class="event" id="event">$event.getDateEvenement()</div> <br> <br>
+            $event.getNomEvenement() <br> <br>
+            $event.getCommentairesEvenement()  <br> <br>
+        </div>
+
+        <div class ="typeEvenement" id="typeEvenement">
+            #if ($event.gettypeEvent() == true)
+            <div class="type" id="running"> Running </div>
+
+            #elseif ($event.gettypeEvent() == false)
+            <div class="type" id="velo"> Velo </div>
+
+            #end
+        </div>
