@@ -19,7 +19,7 @@ $(document).ready(function(){
   })
   .then(text =>{
   console.log(text);
-  $('#myEvents').html(text);
+ $('#myEvents').html(text);
   })
   });
 

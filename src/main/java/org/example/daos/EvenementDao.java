@@ -141,6 +141,29 @@ public class EvenementDao {
            return userId;
     }
 
+    public Evenement eventFilter (String textbox){
+        System.out.println(textbox);
+        Evenement evenement = new Evenement();
+        Database db =Database.get();
+        Connection connection = db.getConnection();
+        try {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM evenements WHERE CONTAINS ?");
+            statement.setString(1, textbox);
+            ResultSet resultSet = statement.executeQuery();
+            resultSet.next();
+
+
+            evenement=mapEvenement(resultSet);
+            System.out.println(evenement);
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+        return evenement;
+    }
+
+
     private Evenement mapEvenement(ResultSet resultSet) throws SQLException {
         Evenement e = new Evenement();
         e.setId(resultSet.getInt(1));

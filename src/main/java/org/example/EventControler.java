@@ -156,9 +156,12 @@ public class EventControler {
  public String filterEvent (Request request, Response response) {
   Map<String, Object > modele = new HashMap<>();
   String text = request.queryParamOrDefault("text", "");
+  System.out.println(text);
+  Evenement e = new Evenement();
 
+  e = evenementDao.eventFilter(text);
 
-  modele.put("text", text );
+  modele.put("research", e );
 
   return Template.render("evenementListePartial.html", modele);
  }
