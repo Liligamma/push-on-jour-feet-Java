@@ -125,7 +125,8 @@ public class EvenementDao {
     public int setParticipants (int eventId, int userId){
         Database db =Database.get();
         Connection connection = db.getConnection();
-
+        System.out.println(eventId);
+        System.out.println(userId);
         try{
             PreparedStatement statement = connection.prepareStatement("INSERT INTO evenements_utilisateurs (evenements_id, utilisateurs_id) VALUES (?,?)");
             statement.setInt(1, eventId);

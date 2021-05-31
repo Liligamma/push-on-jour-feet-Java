@@ -45,6 +45,7 @@ public class EventControler {
 //  on initialise le queryparameter qui correspond à l'id de l'événement que l'on veut afficher
   String eventIdString = request.queryParamOrDefault("detail_id", "0");
   int eventid = Integer.parseInt(eventIdString);
+  System.out.println(eventid);
   Evenement firstEvent= evenementDao.getEvenementById(eventid);
 //  on récupère l'organisateur de l'événement
   User orgaEvent = evenementDao.getOrganisateur(eventid);
@@ -134,7 +135,6 @@ public class EventControler {
 
  public String participation (Request request, Response response) {
   Map<String, Object > modele = new HashMap<>();
-
   String eventIdString = request.queryParamOrDefault("detail_id", "0");
   int eventid = Integer.parseInt(eventIdString);
 

@@ -25,7 +25,7 @@ public class App {
         Spark.get("/evenements/details", (req, res) -> eventControler.eventDetails(req, res));
         Spark.get("/evenements/nouveau", (req, res) -> eventControler.displayEventForm(req, res));
         Spark.post("/nouveau", (req, res) -> eventControler.createEvent(req, res));
-        Spark.get("/participation", (req, res) -> eventControler.participation(req, res));
+        Spark.get("/evenements/participation", (req, res) -> eventControler.participation(req, res));
         Spark.get("/evenements/liste", (req, res) -> eventControler.filterEvent(req, res));
 
 
