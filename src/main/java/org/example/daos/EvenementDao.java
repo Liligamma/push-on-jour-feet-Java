@@ -148,7 +148,7 @@ public class EvenementDao {
         Database db =Database.get();
         Connection connection = db.getConnection();
         try {
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM evenements WHERE CONTAINS ?");
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM evenements WHERE nom LIKE @textbox");
             statement.setString(1, textbox);
             ResultSet resultSet = statement.executeQuery();
             resultSet.next();
