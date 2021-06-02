@@ -170,14 +170,13 @@ public class EventControler {
 
 
  public static int UserAuthenticate (Request request, Response response){
-//  Response response=null;
+
 
   Session session = request.session(false);
   int userId=0;
 
   if(session==null){
    System.out.println("la session est nulle");
-//            return Template.render("login.html", modele);
    response.redirect("/login");
 
   }
