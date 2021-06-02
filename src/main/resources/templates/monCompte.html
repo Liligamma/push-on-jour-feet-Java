@@ -30,8 +30,39 @@
 
              <h4> Mot de Passe </h4> $account.getPassword() <br>
 
+         </div>
 
+        <br><br>
 
+         <div class="row font-weight-bold">
+
+            ÉVENEMENTS AUXQUELS VOUS PARTICIPEZ
+
+         </div>
+
+         <div class="row">
+             #foreach ($event in $listeEventInAccount)
+             <div class="col-4 border border-danger rounded shadow flex-box text-center ">
+                 #if($event.gettypeEvent() == true)
+
+                 <img class="img-fluid border border-dark rounded-circle mt-2 mb-2" src="img/running_1.svg" id="img"> <hr>
+
+                 #elseif($event.gettypeEvent() == false)
+
+                 <img class="img-fluid border border-dark rounded-circle mt-2 mb-2" src="img/bike.svg"> <hr>
+                 #end
+                $event.getDateEvenement() <br> <br>
+               $event.getNomEvenement() <br> <br>
+
+                 $event.getOrganisateurId()<br> <br>
+             </div>
+
+             #end
+             <div class ="blank"> </div>
+         </div>
+         <div class="row font-weight-bold">
+
+             ÉVENEMENTS QUE VOUS AVEZ CRÉES
 
          </div>
 

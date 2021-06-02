@@ -1,6 +1,7 @@
 package org.example;
 
 import org.example.core.Template;
+import org.example.daos.EvenementDao;
 import org.example.daos.LoginDao;
 import org.example.modeles.Evenement;
 import org.example.modeles.User;
@@ -12,6 +13,7 @@ import spark.Spark;
 
 import java.sql.SQLOutput;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 
@@ -19,6 +21,7 @@ import java.util.Map;
 public class LoginControler {
 
     LoginDao loginDao = new LoginDao();
+    EvenementDao EvenementDao = new EvenementDao();
 
     public String displayLogin(Request request, Response response){
         if(request.requestMethod().equals("POST")){
@@ -78,29 +81,14 @@ public class LoginControler {
         Map<String, Object > modele = new HashMap<>();
 
         int userId = UserAuthenticate(request, response);
-//        Map<String, Object > modele = new HashMap<>();
-
-//        mettre le tout dans une fonction static prendre en paramètre request et return userId
-//            Session session = request.session(false);
 //
-//            if(session==null){
-//
-//                return Template.render("login.html", modele);
-//            }
-//
-//            int userId=0;
-//
-//        Object userIdObj = session.attribute("currentUserId");
-//        if (userIdObj instanceof Integer) {
-//            userId = (Integer) userIdObj;
-//        } else if (userIdObj instanceof String) {
-//            userId = Integer.parseInt((String) userIdObj);
-//        } else {
-//            Spark.halt(401, "No valid session found");
-//        }
 
             User firstUsers = loginDao.getUserById(userId);
+            List<Evenement> listeEvenementsInAccount = EvenementDao.getEventInAccount(userId);
+
+
             modele.put("account", firstUsers);
+            modele.put("listeEventInAccount", listeEvenementsInAccount);
 
             return Template.render("monCompte.html", modele);
 
@@ -143,6 +131,18 @@ public class LoginControler {
         return Template.render("creationCompte.html", modele);
     }
 
+//    public String displayEventsInAccount(Request request, Response response) {
+//        Map<String, Object > modele = new HashMap<>();
+//        int userId = UserAuthenticate(request, response);
+//
+//        List<Evenement> listeEvenementsInAccount = EvenementDao.getEventInAccount(userId);
+//
+//        modele.put("listeEventInAccount", listeEvenementsInAccount);
+//
+// Cette fonction retourne le template HTML qui va nous servir à afficher les événements à l'écran
+//        return Template.render("monCompte.html", modele);
+//
+//    }
 
     public static int UserAuthenticate (Request request, Response response){
 //        Response response=null;

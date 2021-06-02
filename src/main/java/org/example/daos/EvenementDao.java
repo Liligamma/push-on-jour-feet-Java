@@ -164,6 +164,32 @@ public class EvenementDao {
         return evenement;
     }
 
+    public List<Evenement> getEventInAccount (int userId){
+        List<Evenement> event = new ArrayList<>();
+        Database db =Database.get();
+        Connection connection = db.getConnection();
+        try {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM evenements INNER JOIN evenements_utilisateurs ON evenements.id = evenements_utilisateurs.evenements_id AND evenements_utilisateurs.utilisateurs_id = ?");
+            statement.setInt(1, userId);
+            System.out.println(userId);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next() == true){
+                Evenement e = mapEvenement(resultSet);
+                event.add(e);
+            }
+
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+
+
+   return event;
+    }
+
+
+
 
     private Evenement mapEvenement(ResultSet resultSet) throws SQLException {
         Evenement e = new Evenement();
