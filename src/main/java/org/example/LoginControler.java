@@ -85,10 +85,13 @@ public class LoginControler {
 
             User firstUsers = loginDao.getUserById(userId);
             List<Evenement> listeEvenementsInAccount = EvenementDao.getEventInAccount(userId);
+            List<Evenement> createdEventList = EvenementDao.getEventCreated(userId);
+            List<User> listeParticipants = EvenementDao.getParticipants(eventid);
 
 
             modele.put("account", firstUsers);
             modele.put("listeEventInAccount", listeEvenementsInAccount);
+            modele.put ("createdEventList", createdEventList);
 
             return Template.render("monCompte.html", modele);
 
@@ -131,18 +134,6 @@ public class LoginControler {
         return Template.render("creationCompte.html", modele);
     }
 
-//    public String displayEventsInAccount(Request request, Response response) {
-//        Map<String, Object > modele = new HashMap<>();
-//        int userId = UserAuthenticate(request, response);
-//
-//        List<Evenement> listeEvenementsInAccount = EvenementDao.getEventInAccount(userId);
-//
-//        modele.put("listeEventInAccount", listeEvenementsInAccount);
-//
-// Cette fonction retourne le template HTML qui va nous servir à afficher les événements à l'écran
-//        return Template.render("monCompte.html", modele);
-//
-//    }
 
     public static int UserAuthenticate (Request request, Response response){
 //        Response response=null;

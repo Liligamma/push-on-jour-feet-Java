@@ -52,7 +52,7 @@
                  <img class="img-fluid border border-dark rounded-circle mt-2 mb-2" src="img/bike.svg"> <hr>
                  #end
                 $event.getDateEvenement() <br> <br>
-               $event.getNomEvenement() <br> <br>
+                 <a href="evenements/details?detail_id= $event.getId()">$event.getNomEvenement()</a> <br> <br>
 
                  $event.getOrganisateurId()<br> <br>
              </div>
@@ -60,11 +60,30 @@
              #end
              <div class ="blank"> </div>
          </div>
-         <div class="row font-weight-bold">
+         <div class="row font-weight-bold pt-100 createdEvent">
 
              ÉVENEMENTS QUE VOUS AVEZ CRÉES
 
          </div>
+
+         <div class="row">
+             #foreach ($event in $createdEventList)
+             <div class="col-4 border border-danger rounded shadow flex-box text-center ">
+                 #if($event.gettypeEvent() == true)
+
+                 <img class="img-fluid border border-dark rounded-circle mt-2 mb-2" src="img/running_1.svg" id="img"> <hr>
+
+                 #elseif($event.gettypeEvent() == false)
+
+                 <img class="img-fluid border border-dark rounded-circle mt-2 mb-2" src="img/bike.svg"> <hr>
+                 #end
+                 $event.getDateEvenement() <br> <br>
+                 <a href="evenements/details?detail_id= $event.getId()">$event.getNomEvenement()</a> <br> <br>
+
+                 <br> <br>
+             </div>
+
+             #end
 
      </div>
 </div>

@@ -189,6 +189,30 @@ public class EvenementDao {
     }
 
 
+    public List<Evenement> getEventCreated (int orgId){
+        List<Evenement> event = new ArrayList<>();
+        Database db =Database.get();
+        Connection connection = db.getConnection();
+        try {
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM evenements WHERE organisateur_id = ?");
+            statement.setInt(1, orgId);
+            System.out.println(orgId);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next() == true){
+                Evenement e = mapEvenement(resultSet);
+                event.add(e);
+            }
+
+
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+
+
+
+        return event;
+    }
+
 
 
     private Evenement mapEvenement(ResultSet resultSet) throws SQLException {
