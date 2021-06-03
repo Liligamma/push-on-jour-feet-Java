@@ -24,6 +24,10 @@
                         <option value="Velo"> Velo </option>
                     </select> <br>
                     <label for="adresse"> Adresse du rendez vous  <input type="text" name="adresse"  class="form-control" id="adresse"/></label> <br>
+    </div>
+                    <div class="row text-center justify content-center">
+                        <div class="col-12" id="myMap" style='position:relative;width:600px;height:400px;'></div> <br>
+                    </div>
                     <label for="latitude"> Latitude <input type="number" name="latitude" min="0" step="0.01" required="required" class="form-control" id="latitude"/> </label>
                     <label for="longitude"> Longitude<input type="number" name="longitude" min="0" step="0.01" required="required" class="form-control" id="longitude"/> </label>
                     <label for="commentaires"> Informations sur la sortie</label> <textarea name="commentaires" placeholder="Merci de renseigner le type de sortie, le point de rendez vous précis, nombre de km, consignes, niveau...." required="required" class="form-control" id="commentaires"></textarea>
@@ -33,11 +37,50 @@
                     <br>
 
                     <button  class="btn btn-danger" type="submit" > Enregistrer </button>
-                    <!--
-
                 </div>
             </form>
-        </div>
 
 
-#end
+
+                   </div>
+
+    </div>
+
+
+   <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?callback=GetMap&key=AodddEr2Z6uTzo8eX5a7xaLk4OHojboX8Bj_wnZ5vxxk1D7H17BO89v-SEGR9HMe' async defer></script>
+   <script>
+
+   var bMapAPIKey = "AodddEr2Z6uTzo8eX5a7xaLk4OHojboX8Bj_wnZ5vxxk1D7H17BO89v-SEGR9HMe";
+
+   var latitude = document.getElementById('latitude');
+   var longitude = document.getElementById('longitude');
+
+   var displayLat = latitude.textContent;
+   var displayLong = longitude.textContent;
+
+   console.log(displayLat);
+   console.log(displayLong);
+
+   function GetMap()
+   {
+   "use strict";
+
+   var map = new Microsoft.Maps.Map('#myMap', {
+   center: new Microsoft.Maps.Location(displayLat, displayLong),
+   mapTypeId: Microsoft.Maps.MapTypeId.aerial,
+   zoom: 12
+   });
+
+
+   var center = map.getCenter();
+
+
+   var pin = new Microsoft.Maps.Pushpin(center, {
+   title: 'Rendez-vous ',
+   subTitle: '',
+   text: '1'
+   });
+
+
+   </script>
+

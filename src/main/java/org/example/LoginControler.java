@@ -86,7 +86,7 @@ public class LoginControler {
             User firstUsers = loginDao.getUserById(userId);
             List<Evenement> listeEvenementsInAccount = EvenementDao.getEventInAccount(userId);
             List<Evenement> createdEventList = EvenementDao.getEventCreated(userId);
-            List<User> listeParticipants = EvenementDao.getParticipants(eventid);
+//            List<User> listeParticipants = EvenementDao.getParticipants(eventid);
 
 
             modele.put("account", firstUsers);
