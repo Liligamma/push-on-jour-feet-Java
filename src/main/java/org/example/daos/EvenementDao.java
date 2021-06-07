@@ -142,19 +142,22 @@ public class EvenementDao {
            return userId;
     }
 
-    public Evenement eventFilter (String textbox){
+    public List<Evenement>  eventFilter (String textbox){
         System.out.println(textbox);
-        Evenement evenement = new Evenement();
+
+        List<Evenement> evenement= new ArrayList<>();
         Database db =Database.get();
         Connection connection = db.getConnection();
         try {
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM evenements WHERE nom LIKE %?%");
-            statement.setString(1, textbox);
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM evenements WHERE nom LIKE ?");
+            statement.setString(1, "%" + textbox + "%");
             ResultSet resultSet = statement.executeQuery();
-            resultSet.next();
+            while (resultSet.next() == true){
+                Evenement e = mapEvenement(resultSet);
+                evenement.add(e);
+            }
 
 
-            evenement=mapEvenement(resultSet);
             System.out.println(evenement);
 
         } catch (SQLException throwables) {
@@ -227,6 +230,8 @@ public class EvenementDao {
         e.setTypeEvent(resultSet.getBoolean(8));
        return e;
     }
+
+
 
     private User mapUser (ResultSet resultSet) throws SQLException{
         User u = new User();

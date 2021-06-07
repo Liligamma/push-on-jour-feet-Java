@@ -157,11 +157,12 @@ public class EventControler {
   Map<String, Object > modele = new HashMap<>();
   String text = request.queryParamOrDefault("text", "");
   System.out.println(text);
-  Evenement e = new Evenement();
 
-  e = evenementDao.eventFilter(text);
 
-  modele.put("research", e );
+  List<Evenement> listeE = evenementDao.eventFilter(text);
+  System.out.println(listeE);
+
+  modele.put("listeE", listeE );
 
   return Template.render("evenementListePartial.html", modele);
  }
