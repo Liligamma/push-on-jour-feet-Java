@@ -24,7 +24,42 @@ $(document).ready(function(){
   });
 
 
+
+
+$("input[name='filter']").click(function(){
+     var col = $(this).val();
+     console.log(col);
+     fetch("/evenements/liste?text=" + col)
+
+
+     .then(result =>{
+         return result.text();
+
+         console.log(result.text())
+
+
+       })
+
+       .then(text =>{
+         console.log(text);
+        $('#myEvents').html(text);
+         })
+         });
+
+
+
+//  var value = $(this).val().checked;
+//  console.log (value);
+//  fetch("/evenements/liste?text=" + value)
+//  .then(result =>{
+//    return result.text();
+
+
+//  })
+//     .then(text =>{
+//     console.log(text);
+//    $('#myEvents').html(text);
+//     })
+//     });
+
 });
-
-
-
