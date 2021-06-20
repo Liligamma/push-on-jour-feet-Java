@@ -2,11 +2,11 @@
     #foreach ($event in $listeE)
     <div class="col-12 col-lg-2 mr-1 border border-danger rounded shadow flex-box text-center event-card" id="eventList">
 
-        #if($event.gettypeEvent() == true)
+        #if($event.gettypeEvent() == "running")
 
         <img class="img-fluid border border-dark rounded-circle mt-2 mb-2" src="img/running_1.svg" id="img"> <hr>
 
-        #elseif($event.gettypeEvent() == false)
+        #elseif($event.gettypeEvent() == "velo")
 
         <img class="img-fluid border border-dark rounded-circle mt-2 mb-2" src="img/bike.svg"> <hr>
         #end
@@ -17,10 +17,10 @@
         </div>
 
         <div class ="typeEvenement" id="typeEvenement">
-            #if ($event.gettypeEvent() == true)
+            #if ($event.gettypeEvent() == "running")
             <div class="type" id="running"> Running </div>
 
-            #elseif ($event.gettypeEvent() == false)
+            #elseif ($event.gettypeEvent() == "velo")
             <div class="type" id="velo"> Velo </div>
 
             #end

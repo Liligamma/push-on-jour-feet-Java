@@ -90,6 +90,7 @@ public class EventControler {
   String nom = query.get("nom");
   String date = query.get("date");
   String typeSortie = query.get("typeSortie");
+  String type = null;
   String latitude = query.get("latitude");
   String longitude = query.get("longitude");
   String commentaires = query.get("commentaires");
@@ -104,7 +105,7 @@ public class EventControler {
 
   Double realLatitude = Double.parseDouble(latitude);
   Double realLongitude = Double.parseDouble(longitude);
-  Boolean realType = Boolean.parseBoolean(typeSortie);
+//  Boolean realType = Boolean.parseBoolean(typeSortie);
 
   System.out.println(myDate);
 
@@ -117,7 +118,7 @@ public class EventControler {
   java.sql.Date date_sql = new java.sql.Date(myDate.getTime());
 
   event.setNomEvenement(nom);
-  event.setTypeEvent(realType);
+  event.setTypeEvent(typeSortie);
   event.setDateEvenement(date_sql);
   event.setLatitude(realLatitude);
   event.setLongitude(realLongitude);
@@ -159,7 +160,17 @@ public class EventControler {
   System.out.println(text);
 
 
-  List<Evenement> listeE = evenementDao.eventFilter(text);
+  List<Evenement> listeE;
+  if (text.isEmpty()){
+    listeE = evenementDao.getAllEvenements();
+
+  }
+
+  else {
+
+   listeE = evenementDao.eventFilter(text);
+  }
+
   System.out.println(listeE);
 
   modele.put("listeE", listeE );

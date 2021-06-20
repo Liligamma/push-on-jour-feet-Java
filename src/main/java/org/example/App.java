@@ -30,7 +30,6 @@ public class App {
         Spark.get("/evenements/liste", (req, res) -> eventControler.filterEvent(req, res));
 
 
-
         HomeControler homeControler = new HomeControler();
         Spark.get("/home", (req, res) -> homeControler.displayHome(req, res));
 
@@ -39,22 +38,12 @@ public class App {
             return Template.render("home.html", new HashMap<>());
         });
 
-
-
-
-
-
         Spark.get("/account", (req, res) -> loginControler.displayAccount(req, res));
-
-
-
 
         Spark.get("/error", (req, res) -> {
 
             return Template.render("loginIssue.html", new HashMap<>());
         });
-
-
 
 
 

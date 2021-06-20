@@ -142,7 +142,6 @@ public class LoginControler {
         System.out.println(session);
         if(session==null){
 
-//            return Template.render("login.html", modele);
             response.redirect("/login");
 
         }

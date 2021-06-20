@@ -12,7 +12,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
 
-
 public class EvenementDao {
 
 
@@ -110,7 +109,7 @@ public class EvenementDao {
             statement.setString(4, event.nomEvenement);
             statement.setInt(5, event.organisateurId);
             statement.setString(6, event.commentairesEvenement);
-            statement.setBoolean(7, event.typeEvent);
+            statement.setString(7, event.typeEvent);
 
             int resultset = statement.executeUpdate();
 
@@ -227,7 +226,7 @@ public class EvenementDao {
         e.setLongitude(resultSet.getDouble(4));
         e.setOrganisateurId(resultSet.getInt(6));
         e.setCommentairesEvenement(resultSet.getString(7));
-        e.setTypeEvent(resultSet.getBoolean(8));
+        e.setTypeEvent(resultSet.getString(8));
        return e;
     }
 

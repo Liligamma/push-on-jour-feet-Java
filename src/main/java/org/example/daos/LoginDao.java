@@ -65,14 +65,8 @@ public class LoginDao {
                 throw new Exception("utilisateur inexistant");
 
             }
-
-
-
-                    myUser= mapUser(resultSet);
+                myUser= mapUser(resultSet);
                     return myUser;
-
-
-
 
 
         } catch (SQLException throwables) {
@@ -81,7 +75,6 @@ public class LoginDao {
 
         return myUser ;
     }
-
 
 
     public static User getUserById(int id){
@@ -102,10 +95,6 @@ public class LoginDao {
 
             myUser= mapUser(resultSet);
             return myUser;
-
-
-
-
 
         } catch (SQLException throwables) {
             throwables.printStackTrace();

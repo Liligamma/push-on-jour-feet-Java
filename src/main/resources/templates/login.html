@@ -33,7 +33,7 @@
                   <br>
 
                  <button  class="btn btn-danger" type="submit" > S'inscrire </button>
-<!--                 onClick="location.href ='login/bienvenu?pseudo='+ document.getElementById('pseudo').value + 'prenom'= document.getElementById('prenom').value + 'nom' = document.getElementById('nom').value  + 'password'= document.getElementById('password').value + 'telephone' = document.getElementById('telephone').value + 'email' = document.getElementById('email').value"-->
+
 
              </div>
              </form>
@@ -83,31 +83,6 @@
     });
 
 
-    const titreSpans = document.querySelectorAll('h1 span');
-const paragrapheDroite1 = document.getElementById('droite1');
-const paragrapheDroite2 = document.getElementById('droite2');
-const paragrapheGauche1 = document.getElementById('gauche1');
-const paragrapgeGauche2 = document.getElementById('gauche2');
 
-
-
-window.addEventListener('load',() =>{
-
-    const timeline = gsap.timeline({paused:true});
-
-    timeline
-        .staggerFrom(titreSpans, 1, {top: -50, opacity:0, ease: "power2.out"}, 0.3)
-
-
-    timeline.play();
-})
-
-$(document).ready(function (){
-
-    $(".btn-info").click(function (){
-
-        $(".concept").slideDown(2000);
-    });
-});
 </script>
 #end
