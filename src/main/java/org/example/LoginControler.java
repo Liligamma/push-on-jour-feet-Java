@@ -86,7 +86,6 @@ public class LoginControler {
             User firstUsers = loginDao.getUserById(userId);
             List<Evenement> listeEvenementsInAccount = EvenementDao.getEventInAccount(userId);
             List<Evenement> createdEventList = EvenementDao.getEventCreated(userId);
-//            List<User> listeParticipants = EvenementDao.getParticipants(eventid);
 
 
             modele.put("account", firstUsers);
@@ -133,6 +132,28 @@ public class LoginControler {
 
         return Template.render("creationCompte.html", modele);
     }
+
+
+    public String eventDetailsAccount (Request request, Response response) {
+        Map<String, Object> modele = new HashMap<>();
+        String eventIdString = request.queryParamOrDefault("detail_id", "0");
+        int eventid = Integer.parseInt(eventIdString);
+
+        Evenement firstEvent = EvenementDao.getEvenementById(eventid);
+        User orgaEvent = EvenementDao.getOrganisateur(eventid);
+        List<User> listeParticipants = EvenementDao.getParticipants(eventid);
+
+
+        modele.put("detailEvenement", firstEvent);
+        modele.put("organisateur", orgaEvent);
+        modele.put("ListeParticipants", listeParticipants);
+
+        return  Template.render("detailsEvenements.html", modele);
+
+
+    }
+
+
 
 
     public static int UserAuthenticate (Request request, Response response){

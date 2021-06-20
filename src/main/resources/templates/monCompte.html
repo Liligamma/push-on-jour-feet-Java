@@ -43,18 +43,18 @@
          <div class="row">
              #foreach ($event in $listeEventInAccount)
              <div class="col-4 border border-danger rounded shadow flex-box text-center ">
-                 #if($event.gettypeEvent() == true)
+                 #if($event.gettypeEvent() == "running")
 
                  <img class="img-fluid border border-dark rounded-circle mt-2 mb-2" src="img/running_1.svg" id="img"> <hr>
 
-                 #elseif($event.gettypeEvent() == false)
+                 #elseif($event.gettypeEvent() == "velo")
 
                  <img class="img-fluid border border-dark rounded-circle mt-2 mb-2" src="img/bike.svg"> <hr>
                  #end
                 $event.getDateEvenement() <br> <br>
-                 <a href="evenements/details?detail_id= $event.getId()">$event.getNomEvenement()</a> <br> <br>
 
-                 $event.getOrganisateurId()<br> <br>
+                 <a href="evenements/details?detail_id=$event.getId()">$event.getNomEvenement()</a> <br> <br>
+
              </div>
 
              #end
@@ -69,16 +69,16 @@
          <div class="row">
              #foreach ($event in $createdEventList)
              <div class="col-4 border border-danger rounded shadow flex-box text-center ">
-                 #if($event.gettypeEvent() == true)
+                 #if($event.gettypeEvent() == "running")
 
                  <img class="img-fluid border border-dark rounded-circle mt-2 mb-2" src="img/running_1.svg" id="img"> <hr>
 
-                 #elseif($event.gettypeEvent() == false)
+                 #elseif($event.gettypeEvent() == "velo")
 
                  <img class="img-fluid border border-dark rounded-circle mt-2 mb-2" src="img/bike.svg"> <hr>
                  #end
                  $event.getDateEvenement() <br> <br>
-                 <a href="evenements/details?detail_id= $event.getId()">$event.getNomEvenement()</a> <br> <br>
+                 <a href="evenements/details?detail_id=$event.getId()">$event.getNomEvenement()</a> <br> <br>
 
                  <br> <br>
              </div>

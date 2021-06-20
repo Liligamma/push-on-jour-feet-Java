@@ -20,6 +20,7 @@ public class App {
         Spark.post("/login", (req, res) -> loginControler.displayLogin(req, res));
         Spark.get("/logout", (req, res) -> loginControler.displayLogout(req, res));
         Spark.post("/bienvenu", (req, res) -> loginControler.createAccount(req, res));
+        Spark.get("/evenements/details", (req, res) -> loginControler.eventDetailsAccount(req, res));
 
         EventControler eventControler = new EventControler();
         Spark.get("/evenements", (req, res) -> eventControler.displayEvents(req, res));
